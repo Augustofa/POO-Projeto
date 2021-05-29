@@ -39,7 +39,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
         hHero = new Hero("skooter.png"); /* https://www.online-image-editor.com/ */
-        hHero.setPosicao(0, 7);
+        hHero.setPosicao(0, 4);
         this.addElemento(hHero);
         
         RoboVerde cTeste = new RoboVerde("roboVerde.png");
@@ -60,7 +60,19 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         BlocoImovel blocoImovel = new BlocoImovel("blocoTemp.png");
         blocoImovel.setPosicao(9, 1);
-        this.addElemento(blocoImovel);       
+        this.addElemento(blocoImovel);
+        
+        BlocoImovel blocoImovel2 = new BlocoImovel("blocoTemp.png");
+        blocoImovel2.setPosicao(9, 2);
+        this.addElemento(blocoImovel2); 
+        
+        BlocoImovel blocoImovel3 = new BlocoImovel("blocoTemp.png");
+        blocoImovel3.setPosicao(9, 3);
+        this.addElemento(blocoImovel3);
+        
+        BlocoImovel cereja = new BlocoImovel("cereja.png");
+        cereja.setPosicao(9, 5);
+        this.addElemento(cereja);
     }
 
 /*--------------------------------------------------*/
