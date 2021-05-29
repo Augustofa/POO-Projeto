@@ -38,29 +38,29 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
-        hHero = new Hero("vacina.png"); /* https://www.online-image-editor.com/ */
+        hHero = new Hero("skooter.png"); /* https://www.online-image-editor.com/ */
         hHero.setPosicao(0, 7);
         this.addElemento(hHero);
         
-        CoronaVirus cTeste = new CoronaVirus("carro_azul.png");
+        RoboVerde cTeste = new RoboVerde("roboVerde.png");
         cTeste.setPosicao(5, 5);
         this.addElemento(cTeste);     
 
-        CoronaVirus cCorona = new CoronaVirus("covid.png");
-        cCorona.setPosicao(3, 3);
-        this.addElemento(cCorona);
+        RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
+        roboVerde1.setPosicao(3, 3);
+        this.addElemento(roboVerde1);
 
-        CoronaVirus cCorona2 = new CoronaVirus("covid.png");
-        cCorona2.setPosicao(6, 6);
-        this.addElemento(cCorona2);
+        RoboVerde roboVerde2 = new RoboVerde("roboVerde.png");
+        roboVerde2.setPosicao(6, 6);
+        this.addElemento(roboVerde2);
 
-        CoronaVirus cCorona3 = new CoronaVirus("covid.png");
-        cCorona3.setPosicao(2, 9);
-        this.addElemento(cCorona3);
+        RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
+        roboAmarelo.setPosicao(2, 9);
+        this.addElemento(roboAmarelo);
 
-        Caveira bV = new Caveira("caveira.png");
-        bV.setPosicao(9, 1);
-        this.addElemento(bV);       
+        BlocoImovel blocoImovel = new BlocoImovel("blocoTemp.png");
+        blocoImovel.setPosicao(9, 1);
+        this.addElemento(blocoImovel);       
     }
 
 /*--------------------------------------------------*/
@@ -84,13 +84,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Desenha cenário*/
         try {
             //Pega a imagem fora do loop para um aumento gigante na performance
-            Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "asfalto.png");
-            for (int i = 0; i < Consts.RES; i++) {
+            Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "backgroundTeste.png");
+            g2.drawImage(newImage, 0, 0, null);  
+            /*for (int i = 0; i < Consts.RES; i++) {
                 for (int j = 0; j < Consts.RES; j++) {
-                    /*Linha para alterar o background*/
+                    /*Linha para alterar o background*
                     g2.drawImage(newImage,j*Consts.CELL_SIDE, i*Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);  
                 }
-            }
+            }*/
         } catch (IOException ex) {
             Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -113,7 +114,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             public void run() {
                 repaint(); /*(executa o metodo paint)*/
             }
-        };        
+        };
         
         /*Redesenha (executa o metodo paint) tudo a cada Consts.FRAME_INTERVAL milissegundos*/
         Timer timer = new Timer();
@@ -132,13 +133,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
             this.eElementos.clear();
-            hHero = new Hero("vacina.png"); /* https://www.online-image-editor.com/ */
+            hHero = new Hero("skooter.png"); /* https://www.online-image-editor.com/ */
             hHero.setPosicao(0, 7);
             this.addElemento(hHero);
 
-            CoronaVirus cTeste = new CoronaVirus("carro_azul.png");
+            RoboVerde cTeste = new RoboVerde("carro_azul.png");
             cTeste.setPosicao(5, 5);
             this.addElemento(cTeste);
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            //hHero.DestroiElemento()
         }
         
         

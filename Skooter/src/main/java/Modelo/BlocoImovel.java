@@ -6,10 +6,10 @@ import Controler.Tela;
 import java.awt.Graphics;
 import java.io.Serializable;
 
-public class Caveira extends Elemento implements Serializable{
+public class BlocoImovel extends Elemento implements Serializable{
     private int iContaFrames;
     
-    public Caveira(String sNomeImagePNG) {
+    public BlocoImovel(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bTransponivel = false;
         this.iContaFrames = 0;

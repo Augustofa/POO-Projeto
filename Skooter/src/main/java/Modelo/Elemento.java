@@ -19,11 +19,13 @@ public abstract class Elemento implements Serializable {
 
     protected ImageIcon iImage;
     protected Posicao pPosicao;
+    protected char direcaoOlhar;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
        
     protected Elemento(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
+        this.direcaoOlhar = 'D';
         this.bTransponivel = true;
         this.bMortal = false;
         try {
@@ -45,7 +47,15 @@ public abstract class Elemento implements Serializable {
     public boolean isbTransponivel() {
         return bTransponivel;
     }
-
+    
+    public char getDirecaoOlhar(){
+        return this.direcaoOlhar;
+    }
+    
+    public void setDirecaoOlhar(char direcao){
+        this.direcaoOlhar = direcao;
+    }
+    
     public void setbTransponivel(boolean bTransponivel) {
         this.bTransponivel = bTransponivel;
     }
@@ -55,18 +65,22 @@ public abstract class Elemento implements Serializable {
     }
 
     public boolean moveUp() {
+        this.setDirecaoOlhar('U');
         return this.pPosicao.moveUp();
     }
 
     public boolean moveDown() {
+        this.setDirecaoOlhar('D');
         return this.pPosicao.moveDown();
     }
 
     public boolean moveRight() {
+        this.setDirecaoOlhar('R');
         return this.pPosicao.moveRight();
     }
 
     public boolean moveLeft() {
+        this.setDirecaoOlhar('L');
         return this.pPosicao.moveLeft();
     }
     
