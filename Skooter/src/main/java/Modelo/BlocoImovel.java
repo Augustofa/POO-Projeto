@@ -19,12 +19,12 @@ public class BlocoImovel extends Elemento implements Serializable{
         super.autoDesenho();
 
         this.iContaFrames++;
-        /*A cada intervalo de Consts.TIMER_DISPARO milisegundos, cria um fakenews na posicao a direita*/
+        /*A cada intervalo de Consts.TIMER_DISPARO milisegundos, cria um fakenews na posicao a direita
         if(this.iContaFrames == Consts.TIMER_DISPARO){
             this.iContaFrames = 0;
             FakeNews f = new FakeNews("fakenews.png");
             f.setPosicao(this.pPosicao.getLinha()-1,this.pPosicao.getColuna());
-            Desenhador.getTelaDoJogo().addElemento(f);
-        }
+            Desenhador.getTelaDoJogo().addElemento(f); 
+        }*/
     }    
 }
