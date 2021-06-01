@@ -28,8 +28,8 @@ public void processaTudo(ArrayList<Elemento> e){
             if((j != i) && eTemp.getPosicao().estaNaMesmaPosicao(eTemp2.getPosicao())){
                  
                 // Remove genericamente o elemento que não é o herói
-                if(eTemp.isbTransponivel() && (i != 0)){ 
-                    e.remove(eTemp);
+                if(eTemp.isbTransponivel() && (i == 0) && (j>= 5)){ 
+                    e.remove(eTemp2);
                 }
                 if(eTemp.isbTransponivel() && (i == 0) && (j < 5)){ 
                     e.remove(eTemp);
