@@ -22,6 +22,7 @@ public class RoboVerde extends Elemento implements Serializable{
 
     public RoboVerde(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.bTransponivel = false;
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){

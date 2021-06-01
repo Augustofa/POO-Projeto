@@ -24,6 +24,7 @@ public class RoboAmarelo extends Elemento implements Serializable{
     public RoboAmarelo(String sNomeImagePNG, Hero imagemHero) {
         super(sNomeImagePNG);
         this.imagemHero = imagemHero;
+        this.bTransponivel = false;
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){

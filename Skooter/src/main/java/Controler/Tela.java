@@ -70,9 +70,21 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         blocoImovel3.setPosicao(9, 3);
         this.addElemento(blocoImovel3);
         
-        BlocoImovel cereja = new BlocoImovel("cereja.png");
+        Fruta cereja = new Fruta("cereja.png");
         cereja.setPosicao(9, 5);
         this.addElemento(cereja);
+        
+        Fruta limao = new Fruta("limao.png");
+        limao.setPosicao(8, 7);
+        this.addElemento(limao);
+        
+        Fruta morango = new Fruta("morango.png");
+        morango.setPosicao(4, 4);
+        this.addElemento(morango);
+        
+        Fruta uva = new Fruta("uva.png");
+        uva.setPosicao(4, 7);
+        this.addElemento(uva);
     }
 
 /*--------------------------------------------------*/
