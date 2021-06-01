@@ -48,4 +48,9 @@ public class RoboAmarelo extends Elemento implements Serializable{
             this.moveLeft();
         }
     }
+    
+    public void voltaAUltimaPosicao(){
+        this.pPosicao.volta();
+    }
+    
 }

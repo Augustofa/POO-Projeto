@@ -156,6 +156,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
+            
             this.eElementos.clear();
             hHero = new Hero("skooter.png"); /* https://www.online-image-editor.com/ */
             hHero.setPosicao(0, 7);

@@ -38,4 +38,8 @@ public class RoboVerde extends Elemento implements Serializable{
     public void autoDesenho(){          
         super.autoDesenho();
     }
+    
+    public void voltaAUltimaPosicao(){
+        this.pPosicao.volta();
+    }
 }
