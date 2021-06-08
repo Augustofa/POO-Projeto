@@ -22,7 +22,8 @@ public class RoboVerde extends Elemento implements Serializable{
 
     public RoboVerde(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        this.bTransponivel = false;
+        this.bTransponivel = true;
+        this.bMortal = true;
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){
@@ -37,9 +38,5 @@ public class RoboVerde extends Elemento implements Serializable{
     
     public void autoDesenho(){          
         super.autoDesenho();
-    }
-    
-    public void voltaAUltimaPosicao(){
-        this.pPosicao.volta();
     }
 }

@@ -12,6 +12,7 @@ public class BlocoImovel extends Elemento implements Serializable{
     public BlocoImovel(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bTransponivel = false;
+        this.bDestrutivel = true;
         this.iContaFrames = 0;
     }
 

@@ -21,14 +21,26 @@ public class ControleDeJogo {
     public void processaTudo(ArrayList<Elemento> e){
         Elemento eTemp;
         Elemento eTemp2;
-        RoboAmarelo eTemp3;
-
+        
         for(int i = 0; i < e.size(); i++){
             eTemp = e.get(i); 
-            for(int j = 0; j < e.size(); j++){
+            for(int j = i+1; j < e.size(); j++){
                 eTemp2 = e.get(j);
                 if((j != i) && eTemp.getPosicao().estaNaMesmaPosicao(eTemp2.getPosicao())){
-
+                    if(i == 0){
+                        if(eTemp2.isbColetavel()){
+                            e.remove(eTemp2);
+                        }else if(eTemp2.isbMortal()){
+                            e.remove(eTemp);
+                        }
+                    } else if(eTemp.isbColetavel()){
+                        eTemp2.voltaAUltimaPosicao();
+                    } else if(eTemp.isbMortal()){
+                        eTemp.voltaAUltimaPosicao();
+                    } else{
+                        eTemp2.voltaAUltimaPosicao();
+                    }
+                    /*
                     // Remove genericamente o elemento que não é o herói
                     if(eTemp.isbTransponivel() && (i == 0) && (j>= 5)){ 
                         e.remove(eTemp2);
@@ -47,9 +59,10 @@ public class ControleDeJogo {
                         eTemp3 = (RoboAmarelo)(eTemp);
                         eTemp3.voltaAUltimaPosicao();
                     }
-            }
-        } 
-      }
+                    */
+                }
+            } 
+        }
     }
 
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Posicao p){

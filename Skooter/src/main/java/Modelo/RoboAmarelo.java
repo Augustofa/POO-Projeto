@@ -24,7 +24,8 @@ public class RoboAmarelo extends Elemento implements Serializable{
     public RoboAmarelo(String sNomeImagePNG, Hero imagemHero) {
         super(sNomeImagePNG);
         this.imagemHero = imagemHero;
-        this.bTransponivel = false;
+        this.bTransponivel = true;
+        this.bMortal = true;
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){
@@ -47,10 +48,5 @@ public class RoboAmarelo extends Elemento implements Serializable{
         } else if (this.imagemHero.pPosicao.getColuna() < this.pPosicao.getColuna()) {
             this.moveLeft();
         }
-    }
-    
-    public void voltaAUltimaPosicao(){
-        this.pPosicao.volta();
-    }
-    
+    }   
 }

@@ -23,7 +23,7 @@ public class Desenhador implements Serializable {
         iImage.paintIcon(tCenarioOndeSeDesenha,getGraphicsDaTela(),iColuna * Consts.CELL_SIDE, iLinha * Consts.CELL_SIDE);
     }
     
-    /*private, entao eh usaddo soh aqui dentro*/
+    /*private, entao eh usado so aqui dentro*/
     private static Graphics getGraphicsDaTela() {
         return tCenarioOndeSeDesenha.getGraphicsBuffer();
     }

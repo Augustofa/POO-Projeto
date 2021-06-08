@@ -3,12 +3,14 @@ package Modelo;
 import Auxiliar.Consts;
 import Auxiliar.Desenhador;
 import Controler.Tela;
+import Controler.ControleDeJogo;
 import Auxiliar.Posicao;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -22,12 +24,16 @@ public abstract class Elemento implements Serializable {
     protected char direcaoOlhar;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
+    protected boolean bColetavel;
+    protected boolean bDestrutivel;
        
     protected Elemento(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
         this.direcaoOlhar = 'D';
         this.bTransponivel = true;
         this.bMortal = false;
+        this.bColetavel = false;
+        this.bDestrutivel = false;
         try {
             iImage = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
             Image img = iImage.getImage();
@@ -46,6 +52,18 @@ public abstract class Elemento implements Serializable {
 
     public boolean isbTransponivel() {
         return bTransponivel;
+    }
+
+    public boolean isbMortal() {
+        return bMortal;
+    }
+
+    public boolean isbColetavel() {
+        return bColetavel;
+    }
+
+    public boolean isbDestrutivel() {
+        return bDestrutivel;
     }
     
     public char getDirecaoOlhar(){
@@ -84,7 +102,11 @@ public abstract class Elemento implements Serializable {
         return this.pPosicao.moveLeft();
     }
     
-   public void autoDesenho(){
+    public void autoDesenho(){
         Desenhador.desenhar(this.iImage, pPosicao.getColuna(), pPosicao.getLinha());        
-    }    
+    } 
+    
+    public void voltaAUltimaPosicao(){
+        this.pPosicao.volta();
+    }
 }
