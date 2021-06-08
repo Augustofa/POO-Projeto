@@ -121,8 +121,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
         /*Aqui podem ser inseridos novos processamentos de controle*/
         if (!this.eElementos.isEmpty()) {
-            this.cControle.desenhaTudo(eElementos);
             this.cControle.processaTudo(eElementos);
+            this.cControle.desenhaTudo(eElementos);
         }
         
         //Esvazia os espacos de memoria ocupados pelos Buffers
