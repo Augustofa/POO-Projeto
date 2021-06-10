@@ -40,26 +40,6 @@ public class ControleDeJogo {
                     } else{
                         eTemp2.voltaAUltimaPosicao();
                     }
-                    /*
-                    // Remove genericamente o elemento que não é o herói
-                    if(eTemp.isbTransponivel() && (i == 0) && (j>= 5)){ 
-                        e.remove(eTemp2);
-                    }
-                    // Remove o herói quando se choca com um robô
-                    if(eTemp.isbTransponivel() && (i == 0) && (j < 5)){ 
-                        e.remove(eTemp);
-                    }
-                    // Impede que o robô se choque com a parede
-                    if((!eTemp.isbTransponivel()) && (!eTemp2.isbTransponivel()) && (i < 5)){
-                        eTemp3 = (RoboAmarelo)(eTemp);
-                        eTemp3.voltaAUltimaPosicao();
-                    }
-                    // Impede que o robô se choque com as frutas
-                    if((!eTemp.isbTransponivel()) && (eTemp2.isbTransponivel()) && (j != 0)){
-                        eTemp3 = (RoboAmarelo)(eTemp);
-                        eTemp3.voltaAUltimaPosicao();
-                    }
-                    */
                 }
             } 
         }
