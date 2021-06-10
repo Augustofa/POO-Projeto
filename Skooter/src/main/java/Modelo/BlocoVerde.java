@@ -6,15 +6,16 @@ import Controler.Tela;
 import java.awt.Graphics;
 import java.io.Serializable;
 
-public class Fruta extends Elemento implements Serializable{
+public class BlocoVerde extends Elemento implements Serializable{
     
-    public Fruta(String sNomeImagePNG) {
+    public BlocoVerde(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        this.bTransponivel = true;
-        this.bColetavel = true;
+        this.bTransponivel = false;
+        this.bDestrutivel = true;
+        this.bMovel = true;
     }
 
     public void autoDesenho() {
         super.autoDesenho();
-    }
+    }    
 }

@@ -28,10 +28,15 @@ public class ControleDeJogo {
                 eTemp2 = e.get(j);
                 if((j != i) && eTemp.getPosicao().estaNaMesmaPosicao(eTemp2.getPosicao())){
                     if(i == 0){
+                        //Hero x Item
                         if(eTemp2.isbColetavel()){
                             e.remove(eTemp2);
+                        //Hero x Inimigo
                         }else if(eTemp2.isbMortal()){
                             e.remove(eTemp);
+                        //Hero x BlocoVerde
+                        }else if(eTemp2.isbMovel()){
+                            eTemp2.moveUp();
                         }
                     } else if(eTemp.isbColetavel()){
                         eTemp2.voltaAUltimaPosicao();
@@ -41,7 +46,7 @@ public class ControleDeJogo {
                         eTemp2.voltaAUltimaPosicao();
                     }
                 }
-            } 
+            }
         }
     }
 

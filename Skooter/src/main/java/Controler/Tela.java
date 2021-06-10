@@ -58,15 +58,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         roboAmarelo.setPosicao(2, 9);
         this.addElemento(roboAmarelo);
 
-        BlocoImovel blocoImovel = new BlocoImovel("blocoTemp.png");
+        BlocoVermelho blocoImovel = new BlocoVermelho("blocoTemp.png");
         blocoImovel.setPosicao(9, 1);
         this.addElemento(blocoImovel);
         
-        BlocoImovel blocoImovel2 = new BlocoImovel("blocoTemp.png");
+        BlocoVermelho blocoImovel2 = new BlocoVermelho("blocoTemp.png");
         blocoImovel2.setPosicao(9, 2);
         this.addElemento(blocoImovel2); 
         
-        BlocoImovel blocoImovel3 = new BlocoImovel("blocoTemp.png");
+        BlocoVermelho blocoImovel3 = new BlocoVermelho("blocoTemp.png");
         blocoImovel3.setPosicao(9, 3);
         this.addElemento(blocoImovel3);
         
@@ -87,11 +87,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.addElemento(uva);
         
         
-        BlocoImovel blocomovel1 = new BlocoImovel("blocomovel.png");
+        BlocoVerde blocomovel1 = new BlocoVerde("blocomovel.png");
         blocomovel1.setPosicao(10, 6);
         this.addElemento(blocomovel1); 
         
-        BlocoImovel blocomovel2 = new BlocoImovel("blocomovel.png");
+        BlocoVerde blocomovel2 = new BlocoVerde("blocomovel.png");
         blocomovel2.setPosicao(10, 5);
         this.addElemento(blocomovel2);
         

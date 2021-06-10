@@ -26,6 +26,7 @@ public abstract class Elemento implements Serializable {
     protected boolean bMortal;       /*Se encostar, morre?*/
     protected boolean bColetavel;
     protected boolean bDestrutivel;
+    protected boolean bMovel;
        
     protected Elemento(String sNomeImagePNG) {
         this.pPosicao = new Posicao(1, 1);
@@ -34,6 +35,7 @@ public abstract class Elemento implements Serializable {
         this.bMortal = false;
         this.bColetavel = false;
         this.bDestrutivel = false;
+        this.bMovel = false;
         try {
             iImage = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
             Image img = iImage.getImage();
@@ -65,6 +67,10 @@ public abstract class Elemento implements Serializable {
     public boolean isbDestrutivel() {
         return bDestrutivel;
     }
+
+    public boolean isbMovel() {
+        return bMovel;
+    } 
     
     public char getDirecaoOlhar(){
         return this.direcaoOlhar;
