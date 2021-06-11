@@ -14,7 +14,7 @@ public class Inimigo extends Elemento implements Serializable {
     
     public Inimigo(String sNomeImagePNG) {
         super(sNomeImagePNG);
-     
+        this.bMortal = true;
     }
     
     public void voltaAUltimaPosicao(){

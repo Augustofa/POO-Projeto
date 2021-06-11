@@ -2,6 +2,7 @@ package Controler;
 
 import Modelo.Elemento;
 import Modelo.Hero;
+import Modelo.Bloco;
 import Controler.Tela;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
@@ -39,26 +40,27 @@ public class ControleDeJogo {
             for(int j = i+1; j < e.size(); j++){
                 eTemp2 = e.get(j);
                 if((j != i) && eTemp.getPosicao().estaNaMesmaPosicao(eTemp2.getPosicao())){
+                    //Heroi x Varias Coisas
                     if(i == 0){
-                        //Hero x Item
-                        if(eTemp2.isbColetavel()){
+                        Hero heroTemp = (Hero) eTemp;
+                        if(eTemp2.isbColetavel()){      /*Item*/
                             e.remove(eTemp2);
-                        //Hero x Inimigo
-                        }else if(eTemp2.isbMortal()){
-                            e.remove(eTemp);
-                        //Hero x BlocoVerde
-                        }else if(eTemp2.isbMovel()){
-                            eTemp2.moveUp();
-                        }else if(!eTemp2.isbTransponivel()){
-                            eTemp.voltaAUltimaPosicao();
+                        }else if(eTemp2.isbMortal()){   /*Inimigo*/
+                            e.remove(heroTemp);
+                        }else if(eTemp2.isbMovel()){    /*BlocoMovel*/
+                            Bloco blocoTemp = (Bloco) eTemp2;
+                            blocoTemp.empurra(heroTemp.apontaUltimaPos());
+                        }else if(!eTemp2.isbTransponivel()){    /*Bloco*/
+                            heroTemp.voltaAUltimaPosicao();
                         }
+                    //Inimigos x Varias Coisas
                     } else if(eTemp.isbColetavel()){
                         eTemp2.voltaAUltimaPosicao();
                     } else if(eTemp.isbMortal()){
                         eTemp.voltaAUltimaPosicao();
                     } else{
                         eTemp2.voltaAUltimaPosicao();
-                    }
+                    } 
                 }
             }
         }

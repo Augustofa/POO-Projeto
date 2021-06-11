@@ -9,19 +9,16 @@ import java.io.Serializable;
 
 /**
  *
- * @author daniel
+ * @author Augusto
  */
-
-public class Seta extends Elemento implements Serializable{
-    char direcao;
-
-    public Seta(String sNomeImagePNG, char direcao) {
+public class BlocoVermelhoMovel extends BlocoVermelho implements Serializable{
+    
+    public BlocoVermelhoMovel(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        this.direcao = direcao;
+        this.bMovel = false;
     }
 
     public void autoDesenho() {
         super.autoDesenho();
     }    
 }
-

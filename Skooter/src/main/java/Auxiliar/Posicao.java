@@ -29,6 +29,10 @@ public class Posicao implements Serializable{
     public int getLinha(){
         return linha;
     }
+
+    public int getLinhaAnterior() {
+        return linhaAnterior;
+    }
    
     public boolean volta(){
         return this.setPosicao(linhaAnterior,colunaAnterior);
@@ -36,6 +40,10 @@ public class Posicao implements Serializable{
 
     public int getColuna(){
         return coluna;
+    }
+
+    public int getColunaAnterior() {
+        return colunaAnterior;
     }
 
     public boolean estaNaMesmaPosicao(Posicao posicao){

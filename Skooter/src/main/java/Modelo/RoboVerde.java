@@ -17,13 +17,12 @@ import javax.swing.JPanel;
  *
  * @author Junio
  */
-public class RoboVerde extends Elemento implements Serializable{
+public class RoboVerde extends Inimigo implements Serializable{
     Timer timer;
 
     public RoboVerde(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        this.bTransponivel = true;
-        this.bMortal = true;
+        
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){

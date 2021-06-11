@@ -17,15 +17,14 @@ import javax.swing.JPanel;
  *
  * @author Junio
  */
-public class RoboAmarelo extends Elemento implements Serializable{
+public class RoboAmarelo extends Inimigo implements Serializable{
     Hero imagemHero;
     Timer timer;
 
     public RoboAmarelo(String sNomeImagePNG, Hero imagemHero) {
         super(sNomeImagePNG);
         this.imagemHero = imagemHero;
-        this.bTransponivel = true;
-        this.bMortal = true;
+        
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){
