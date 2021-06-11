@@ -2,6 +2,7 @@ package Controler;
 
 import Modelo.Elemento;
 import Modelo.Hero;
+import Controler.Tela;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
 import Modelo.RoboAmarelo;
@@ -37,6 +38,8 @@ public class ControleDeJogo {
                         //Hero x BlocoVerde
                         }else if(eTemp2.isbMovel()){
                             eTemp2.moveUp();
+                        }else if(!eTemp2.isbTransponivel()){
+                            eTemp.voltaAUltimaPosicao();
                         }
                     } else if(eTemp.isbColetavel()){
                         eTemp2.voltaAUltimaPosicao();

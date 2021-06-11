@@ -20,6 +20,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
+    private long lastPress = 0;
+    
     /**
      * Creates new form
      */
@@ -34,66 +36,67 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
         /*Este array vai guardar os elementos graficos*/
-        eElementos = new ArrayList<Elemento>(100);
+        eElementos = new ArrayList<>(100);
+        Fases.proximaFase(eElementos);
+        hHero = (Hero) eElementos.get(0);
 
         /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
-        hHero = new Hero("skooter.png"); /* https://www.online-image-editor.com/ */
-        hHero.setPosicao(0, 4);
-        this.addElemento(hHero);
-        
-        RoboVerde cTeste = new RoboVerde("roboVerde.png");
-        cTeste.setPosicao(5, 5);
-        this.addElemento(cTeste);     
-
-        RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
-        roboVerde1.setPosicao(3, 3);
-        this.addElemento(roboVerde1);
-
-        RoboVerde roboVerde2 = new RoboVerde("roboVerde.png");
-        roboVerde2.setPosicao(6, 6);
-        this.addElemento(roboVerde2);
-
-        RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo.setPosicao(2, 9);
-        this.addElemento(roboAmarelo);
-
-        BlocoVermelho blocoImovel = new BlocoVermelho("blocoTemp.png");
-        blocoImovel.setPosicao(9, 1);
-        this.addElemento(blocoImovel);
-        
-        BlocoVermelho blocoImovel2 = new BlocoVermelho("blocoTemp.png");
-        blocoImovel2.setPosicao(9, 2);
-        this.addElemento(blocoImovel2); 
-        
-        BlocoVermelho blocoImovel3 = new BlocoVermelho("blocoTemp.png");
-        blocoImovel3.setPosicao(9, 3);
-        this.addElemento(blocoImovel3);
-        
-        Fruta cereja = new Fruta("cereja.png");
-        cereja.setPosicao(9, 5);
-        this.addElemento(cereja);
-        
-        Fruta limao = new Fruta("limao.png");
-        limao.setPosicao(8, 7);
-        this.addElemento(limao);
-        
-        Fruta morango = new Fruta("morango.png");
-        morango.setPosicao(4, 4);
-        this.addElemento(morango);
-        
-        Fruta uva = new Fruta("uva.png");
-        uva.setPosicao(4, 7);
-        this.addElemento(uva);
-        
-        
-        BlocoVerde blocomovel1 = new BlocoVerde("blocomovel.png");
-        blocomovel1.setPosicao(10, 6);
-        this.addElemento(blocomovel1); 
-        
-        BlocoVerde blocomovel2 = new BlocoVerde("blocomovel.png");
-        blocomovel2.setPosicao(10, 5);
-        this.addElemento(blocomovel2);
+//        hHero = new Hero("skooter.png"); /* https://www.online-image-editor.com/ */
+//        hHero.setPosicao(0, 4);
+//        this.addElemento(hHero);
+//        
+//        RoboVerde cTeste = new RoboVerde("roboVerde.png");
+//        cTeste.setPosicao(5, 5);
+//        this.addElemento(cTeste);     
+//
+//        RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
+//        roboVerde1.setPosicao(3, 3);
+//        this.addElemento(roboVerde1);
+//
+//        RoboVerde roboVerde2 = new RoboVerde("roboVerde.png");
+//        roboVerde2.setPosicao(6, 6);
+//        this.addElemento(roboVerde2);
+//
+//        RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
+//        roboAmarelo.setPosicao(2, 9);
+//        this.addElemento(roboAmarelo);
+//
+//        BlocoVermelho blocoImovel = new BlocoVermelho("blocoTemp.png");
+//        blocoImovel.setPosicao(9, 1);
+//        this.addElemento(blocoImovel);
+//        
+//        BlocoVermelho blocoImovel2 = new BlocoVermelho("blocoTemp.png");
+//        blocoImovel2.setPosicao(9, 2);
+//        this.addElemento(blocoImovel2); 
+//        
+//        BlocoVermelho blocoImovel3 = new BlocoVermelho("blocoTemp.png");
+//        blocoImovel3.setPosicao(9, 3);
+//        this.addElemento(blocoImovel3);
+//        
+//        Fruta cereja = new Fruta("cereja.png");
+//        cereja.setPosicao(9, 5);
+//        this.addElemento(cereja);
+//        
+//        Fruta limao = new Fruta("limao.png");
+//        limao.setPosicao(8, 7);
+//        this.addElemento(limao);
+//        
+//        Fruta morango = new Fruta("morango.png");
+//        morango.setPosicao(4, 4);
+//        this.addElemento(morango);
+//        
+//        Fruta uva = new Fruta("uva.png");
+//        uva.setPosicao(4, 7);
+//        this.addElemento(uva);
+//        
+//        BlocoVerde blocomovel1 = new BlocoVerde("blocomovel.png");
+//        blocomovel1.setPosicao(10, 6);
+//        this.addElemento(blocomovel1); 
+//        
+//        BlocoVerde blocomovel2 = new BlocoVerde("blocomovel.png");
+//        blocomovel2.setPosicao(10, 5);
+//        this.addElemento(blocomovel2);
         
         
     }
@@ -157,35 +160,31 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public void keyPressed(KeyEvent e) {
-        /*Movimento do heroi via teclado*/
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            hHero.moveUp();
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            hHero.moveDown();
-        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            hHero.moveLeft();
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            hHero.moveRight();
-        } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            
-            this.eElementos.clear();
-            hHero = new Hero("skooter.png"); /* https://www.online-image-editor.com/ */
-            hHero.setPosicao(0, 7);
-            this.addElemento(hHero);
+        if(System.currentTimeMillis() - lastPress > Consts.FRAME_INTERVAL + 20){
+            /*Movimento do heroi via teclado*/
+            if (e.getKeyCode() == KeyEvent.VK_UP) {
+                hHero.moveUp();
+            } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                hHero.moveDown();
+            } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                hHero.moveLeft();
+            } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                hHero.moveRight();
+            } else if (e.getKeyCode() == KeyEvent.VK_P) {
+                Fases.proximaFase(eElementos);
+                hHero = (Hero) eElementos.get(0);
+            }
 
-            RoboVerde cTeste = new RoboVerde("carro_azul.png");
-            cTeste.setPosicao(5, 5);
-            this.addElemento(cTeste);
-        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            hHero.destroiElemento(eElementos);
-        }
-        
-        
-        /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-            hHero.voltaAUltimaPosicao();
-        }
 
+            /*
+            Se o heroi for para uma posicao invalida, sobre um elemento 
+            intransponivel, volta para onde estava
+            */
+//            if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+//                hHero.voltaAUltimaPosicao();
+//            }
+            lastPress = System.currentTimeMillis();
+        }
         this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
     }
 
