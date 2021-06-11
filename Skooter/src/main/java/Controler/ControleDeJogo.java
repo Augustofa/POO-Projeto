@@ -54,13 +54,22 @@ public class ControleDeJogo {
                             heroTemp.voltaAUltimaPosicao();
                         }
                     //Inimigos x Varias Coisas
-                    } else if(eTemp.isbColetavel()){
-                        eTemp2.voltaAUltimaPosicao();
-                    } else if(eTemp.isbMortal()){
-                        eTemp.voltaAUltimaPosicao();
-                    } else{
-                        eTemp2.voltaAUltimaPosicao();
-                    } 
+                    }else if(eTemp.isbMortal()){
+                        if(!eTemp2.isbTransponivel() || eTemp2.isbColetavel() || eTemp2.isbMortal()){
+                            eTemp.voltaAUltimaPosicao();                /*Blocos ou Itens ou Inimigos*/
+                        }
+                    //Blocos x Varias Coisas
+                    } else if(!eTemp.isbTransponivel()){
+                        if(eTemp.isbMovel()){   /*Bloco Movel x Varias Coisas*/
+                            if(!eTemp2.isbTransponivel() || eTemp2.isbColetavel()){ /*Blocos ou Itens*/
+                                eTemp.voltaAUltimaPosicao();
+                            }else if(eTemp2.isbMortal()){  /*Inimigo*/
+                                eTemp2.voltaAUltimaPosicao();
+                            }
+                        }else{  /*BlocoImovel x Qualquer Coisa*/
+                            eTemp2.voltaAUltimaPosicao();
+                        }
+                    }
                 }
             }
         }

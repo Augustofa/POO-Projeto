@@ -28,6 +28,9 @@ public class Fases {
             faseAtual.addAll(segundaFase());
         if(numFase == 3)
             faseAtual.addAll(terceiraFase());
+        if(numFase == 4){
+            faseAtual.addAll(faseTeste());
+        }
         
     }
     
@@ -535,5 +538,58 @@ public class Fases {
         fase3.add(hHero);
         
         return fase3;
+    }
+    
+    public static ArrayList<Elemento> faseTeste(){
+        ArrayList<Elemento> faseTeste = new ArrayList<>();
+        Hero hHero = new Hero("skooter.png");
+        hHero.setPosicao(4, 4);
+        faseTeste.add(hHero);
+        
+        RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
+        roboVerde1.setPosicao(10, 9);
+        faseTeste.add(roboVerde1);
+
+        RoboVerde roboVerde2 = new RoboVerde("roboVerde.png");
+        roboVerde2.setPosicao(0, 9);
+        faseTeste.add(roboVerde2);
+                
+        RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
+        roboAmarelo.setPosicao(10, 1);
+        faseTeste.add(roboAmarelo);
+        
+        BlocoVermelho blocoImovel1 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel1.setPosicao(3, 4);
+        faseTeste.add(blocoImovel1);
+        
+        BlocoVermelho blocoImovel2 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel2.setPosicao(3, 5);
+        faseTeste.add(blocoImovel2); 
+        
+        BlocoVermelho blocoImovel3 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel3.setPosicao(4, 6);
+        faseTeste.add(blocoImovel3);
+        
+        BlocoVerdeMovel blocoMovel1 = new BlocoVerdeMovel("blocoVerdeMovel.png");
+        blocoMovel1.setPosicao(3, 3);
+        faseTeste.add(blocoMovel1);
+        
+        BlocoVerdeMovel blocoMovel2 = new BlocoVerdeMovel("blocoVerdeMovel.png");
+        blocoMovel2.setPosicao(8, 3);
+        faseTeste.add(blocoMovel2);
+        
+        BlocoVerdeMovel blocoMovel3 = new BlocoVerdeMovel("blocoVerdeMovel.png");
+        blocoMovel3.setPosicao(9, 7);
+        faseTeste.add(blocoMovel3);
+        
+        Fruta cereja = new Fruta("cereja.png");
+        cereja.setPosicao(5, 6);
+        faseTeste.add(cereja);
+        
+        Fruta limao = new Fruta("limao.png");
+        limao.setPosicao(7, 8);
+        faseTeste.add(limao);
+        
+        return faseTeste;
     }
 }
