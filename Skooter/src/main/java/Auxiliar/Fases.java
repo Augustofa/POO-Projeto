@@ -21,126 +21,132 @@ public class Fases {
         Fases.getFase(fase, eElementos);
     }
     
-    public static void getFase(int numFase, ArrayList<Elemento> arrElementos){
+    public static void getFase(int numFase, ArrayList<Elemento> faseAtual){
         if(numFase == 1)
-            primeiraFase(arrElementos);
+            faseAtual.addAll(primeiraFase());
         if(numFase == 2)
-            segundaFase(arrElementos);
+            faseAtual.addAll(segundaFase());
     }
     
-    private static void primeiraFase(ArrayList<Elemento> faseAtual){
+    private static ArrayList<Elemento> primeiraFase(){
+        ArrayList<Elemento> fase1 = new ArrayList<>();
         Hero hHero = new Hero("skooter.png");
         hHero.setPosicao(0, 4);
-        faseAtual.add(hHero);
+        fase1.add(hHero);
         
         RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
         roboVerde1.setPosicao(3, 3);
-        faseAtual.add(roboVerde1);
+        fase1.add(roboVerde1);
 
         RoboVerde roboVerde2 = new RoboVerde("roboVerde.png");
         roboVerde2.setPosicao(6, 6);
-        faseAtual.add(roboVerde2);
+        fase1.add(roboVerde2);
         
         RoboVerde roboVerde3 = new RoboVerde("roboVerde.png");
         roboVerde3.setPosicao(5, 5);
-        faseAtual.add(roboVerde3);     
+        fase1.add(roboVerde3);     
 
         RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
         roboAmarelo.setPosicao(2, 9);
-        faseAtual.add(roboAmarelo);
+        fase1.add(roboAmarelo);
 
         BlocoVermelho blocoImovel = new BlocoVermelho("blocoTemp.png");
         blocoImovel.setPosicao(9, 1);
-        faseAtual.add(blocoImovel);
+        fase1.add(blocoImovel);
         
         BlocoVermelho blocoImovel2 = new BlocoVermelho("blocoTemp.png");
         blocoImovel2.setPosicao(9, 2);
-        faseAtual.add(blocoImovel2); 
+        fase1.add(blocoImovel2); 
         
         BlocoVermelho blocoImovel3 = new BlocoVermelho("blocoTemp.png");
         blocoImovel3.setPosicao(9, 3);
-        faseAtual.add(blocoImovel3);
+        fase1.add(blocoImovel3);
         
         Fruta cereja = new Fruta("cereja.png");
         cereja.setPosicao(9, 5);
-        faseAtual.add(cereja);
+        fase1.add(cereja);
         
         Fruta limao = new Fruta("limao.png");
         limao.setPosicao(8, 7);
-        faseAtual.add(limao);
+        fase1.add(limao);
         
         Fruta morango = new Fruta("morango.png");
         morango.setPosicao(4, 4);
-        faseAtual.add(morango);
+        fase1.add(morango);
         
         Fruta uva = new Fruta("uva.png");
         uva.setPosicao(4, 7);
-        faseAtual.add(uva);
+        fase1.add(uva);
         
         BlocoVerde blocomovel1 = new BlocoVerde("blocomovel.png");
         blocomovel1.setPosicao(10, 6);
-        faseAtual.add(blocomovel1); 
+        fase1.add(blocomovel1); 
         
         BlocoVerde blocomovel2 = new BlocoVerde("blocomovel.png");
         blocomovel2.setPosicao(10, 5);
-        faseAtual.add(blocomovel2);
+        fase1.add(blocomovel2);
+        
+        return fase1;
     }
     
-    public static void segundaFase(ArrayList<Elemento> faseAtual){
+    public static ArrayList<Elemento> segundaFase(){
+        ArrayList<Elemento> fase2 = new ArrayList<>();
         Hero hHero = new Hero("skooter.png");
         hHero.setPosicao(0, 4);
-        faseAtual.add(hHero);
+        fase2.add(hHero);
         
         RoboVerde cTeste = new RoboVerde("roboVerde.png");
         cTeste.setPosicao(5, 5);
-        faseAtual.add(cTeste);     
+        fase2.add(cTeste);     
 
         RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
         roboVerde1.setPosicao(3, 3);
-        faseAtual.add(roboVerde1);
+        fase2.add(roboVerde1);
 
         RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
         roboAmarelo.setPosicao(2, 9);
-        faseAtual.add(roboAmarelo);
+        fase2.add(roboAmarelo);
 
         BlocoVermelho blocoImovel = new BlocoVermelho("blocoTemp.png");
         blocoImovel.setPosicao(9, 1);
-        faseAtual.add(blocoImovel);
+        fase2.add(blocoImovel);
         
         BlocoVermelho blocoImovel2 = new BlocoVermelho("blocoTemp.png");
         blocoImovel2.setPosicao(9, 2);
-        faseAtual.add(blocoImovel2); 
+        fase2.add(blocoImovel2); 
         
         BlocoVermelho blocoImovel3 = new BlocoVermelho("blocoTemp.png");
         blocoImovel3.setPosicao(9, 3);
-        faseAtual.add(blocoImovel3);
+        fase2.add(blocoImovel3);
         
         Fruta cereja = new Fruta("cereja.png");
         cereja.setPosicao(9, 5);
-        faseAtual.add(cereja);
+        fase2.add(cereja);
         
         Fruta limao = new Fruta("limao.png");
         limao.setPosicao(8, 7);
-        faseAtual.add(limao);
+        fase2.add(limao);
         
         Fruta morango = new Fruta("morango.png");
         morango.setPosicao(4, 4);
-        faseAtual.add(morango);
+        fase2.add(morango);
         
         Fruta uva = new Fruta("uva.png");
         uva.setPosicao(4, 7);
-        faseAtual.add(uva);
+        fase2.add(uva);
         
         BlocoVerde blocoMovel1 = new BlocoVerde("blocomovel.png");
         blocoMovel1.setPosicao(10, 6);
-        faseAtual.add(blocoMovel1); 
+        fase2.add(blocoMovel1); 
         
         BlocoVerde blocoMovel2 = new BlocoVerde("blocomovel.png");
         blocoMovel2.setPosicao(10, 5);
-        faseAtual.add(blocoMovel2);
+        fase2.add(blocoMovel2);
         
         BlocoVerde blocoMovel3 = new BlocoVerde("blocomovel.png");
         blocoMovel3.setPosicao(10, 4);
-        faseAtual.add(blocoMovel3);
+        fase2.add(blocoMovel3);
+        
+        return fase2;
     }
 }
