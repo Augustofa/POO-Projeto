@@ -14,7 +14,18 @@ import Modelo.RoboAmarelo;
 public class ControleDeJogo {
     public void desenhaTudo(ArrayList<Elemento> e){
         for(int i = 0; i < e.size(); i++){
-            e.get(i).autoDesenho();
+            Elemento eTemp1 = e.get(i);
+            
+            // Caso uma seta esteja na mesma posição que o herói ela é desenhada e, depois, ele
+            if(!eTemp1.isbColetavel() && !eTemp1.isbMortal() && !eTemp1.isbMovel() &&
+               !eTemp1.isbDestrutivel() && 
+                eTemp1.getPosicao().estaNaMesmaPosicao(e.get(0).getPosicao())){
+                
+                eTemp1.autoDesenho();
+                e.get(0).autoDesenho();
+            }
+            else{e.get(i).autoDesenho();
+            }
         }
     }
     
