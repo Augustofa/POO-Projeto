@@ -164,6 +164,10 @@ public class Fases {
         Seta setaBaixo5 = new Seta("setabaixo.png",'D');
         setaBaixo5.setPosicao(7,4);
         fase2.add(setaBaixo5);
+        
+        Seta setaBaixo6 = new Seta("setabaixo.png",'D');
+        setaBaixo6.setPosicao(2,4);
+        fase2.add(setaBaixo6);
       
         
         // SETAS PARA DIREITA
@@ -216,6 +220,22 @@ public class Fases {
         Seta setaEsquerda3 = new Seta("setaesquerda.png",'L');
         setaEsquerda3.setPosicao(6,7);
         fase2.add(setaEsquerda3);
+        
+        Seta setaEsquerda4 = new Seta("setaesquerda.png",'L');
+        setaEsquerda4.setPosicao(4,9);
+        fase2.add(setaEsquerda4);
+        
+        Seta setaEsquerda5 = new Seta("setaesquerda.png",'L');
+        setaEsquerda5.setPosicao(4,10);
+        fase2.add(setaEsquerda5);
+        
+        Seta setaEsquerda6 = new Seta("setaesquerda.png",'L');
+        setaEsquerda6.setPosicao(2,5);
+        fase2.add(setaEsquerda6);
+        
+        Seta setaEsquerda7 = new Seta("setaesquerda.png",'L');
+        setaEsquerda7.setPosicao(2,6);
+        fase2.add(setaEsquerda7);
         
         BlocoVermelho blocoImovel1 = new BlocoVermelho("blocoTemp.png");
         blocoImovel1.setPosicao(3, 1);
