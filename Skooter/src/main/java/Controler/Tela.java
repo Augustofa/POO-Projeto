@@ -117,6 +117,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             } else if (e.getKeyCode() == KeyEvent.VK_P) {
                 Fases.proximaFase(eElementos);
                 hHero = (Hero) eElementos.get(0);
+            } else if (e.getKeyCode() == KeyEvent.VK_R) {
+                this.reiniciaFase();
             }
 
 
@@ -133,6 +135,30 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
         
         this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
+    }
+    
+    public void reiniciaFase(){
+        Fases.resetaFase(eElementos);
+        hHero = (Hero) eElementos.get(0);
+    }
+    
+    public boolean checaPosicao(int linha, int coluna){
+        for(Elemento eTemp : eElementos){
+            if(eTemp.pPosicao.getLinha() == linha){
+                if(eTemp.pPosicao.getColuna() == coluna){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    public ArrayList<Elemento> getArrayElementos(){
+        return eElementos;
+    }
+    
+    public Hero getHeroi(){
+        return hHero;
     }
 
     public void mousePressed(MouseEvent e) {

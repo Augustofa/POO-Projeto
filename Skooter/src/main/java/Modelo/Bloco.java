@@ -6,14 +6,14 @@
 package Modelo;
 
 import java.io.Serializable;
+import Auxiliar.Desenhador;
 
 /**
  *
  * @author Augusto
  */
 public abstract class Bloco extends Elemento implements Serializable{
-    
-    public Bloco(String sNomeImagePNG) {
+    protected Bloco(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bTransponivel = false;
     }
@@ -22,7 +22,21 @@ public abstract class Bloco extends Elemento implements Serializable{
         super.autoDesenho();
     }
     
-    public void empurra(char direcaoHeroi){
+    public void checaColisoes(Elemento eTemp){
+        if (this.isbMovel()) {      /*Bloco Movel x Varias Coisas*/
+            /*if(eTemp == Desenhador.getTelaDoJogo().getHeroi()){
+                eTemp.voltaAUltimaPosicao();
+            } else*/ if(!eTemp.isbTransponivel() || eTemp.isbColetavel()) { /*Blocos ou Itens*/
+                this.voltaAUltimaPosicao();
+            } else if (this.isbMortal()) {  /*Inimigo*/
+                eTemp.voltaAUltimaPosicao();
+            }
+        } else {        /*BlocoImovel x Qualquer Coisa*/
+            eTemp.voltaAUltimaPosicao();
+        }
+    }
+    
+    public void movimenta(char direcaoHeroi){
         if(direcaoHeroi == 'R'){
             this.moveLeft();
         } else if(direcaoHeroi == 'L'){
@@ -32,10 +46,13 @@ public abstract class Bloco extends Elemento implements Serializable{
         } else if(direcaoHeroi == 'D'){
             this.moveUp();
         }
+        if(Desenhador.getTelaDoJogo().checaPosicao(this.pPosicao.getLinha(), this.pPosicao.getColuna())){
+            Desenhador.getTelaDoJogo().getHeroi().voltaAUltimaPosicao();
+//            this.checaColisoes(Desenhador.getTelaDoJogo().getHeroi());
+        }
     }
     
-//    @Override
-//    public void voltaAUltimaPosicao(){
-//        
-//    }
+    public void checaMovimentos(){
+        
+    }
 }

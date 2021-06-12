@@ -21,6 +21,11 @@ public class Fases {
         Fases.getFase(fase, eElementos);
     }
     
+    public static void resetaFase(ArrayList<Elemento> eElementos){
+        eElementos.clear();
+        Fases.getFase(fase, eElementos);
+    }
+    
     public static void getFase(int numFase, ArrayList<Elemento> faseAtual){
         if(numFase == 1)
             faseAtual.addAll(primeiraFase());

@@ -20,6 +20,20 @@ public class Hero extends Elemento implements Serializable{
         super(sNomeImagePNG);
     }
     
+    public void checaColisoes(Elemento eTemp) {
+        if (eTemp.isbColetavel()) {             /*Item*/
+            Desenhador.getTelaDoJogo().removeElemento(eTemp);
+        } else if (eTemp.isbMortal()) {         /*Inimigo*/
+            //Morte do Heroi
+            Desenhador.getTelaDoJogo().reiniciaFase();
+        } else if (eTemp.isbMovel()) {          /*BlocoMovel*/
+            Bloco blocoTemp = (Bloco) eTemp;
+            blocoTemp.movimenta(this.apontaUltimaPos());
+        } else if (!eTemp.isbTransponivel()) {  /*Bloco*/
+            this.voltaAUltimaPosicao();
+        }
+    }
+    
     public void destroiElemento(ArrayList<Elemento> e){
         if (this.direcaoOlhar == 'U') {
             this.destroiAux(e, this.pPosicao.getColuna(), this.pPosicao.getLinha() - 1);

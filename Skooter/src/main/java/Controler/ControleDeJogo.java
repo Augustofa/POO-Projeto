@@ -1,8 +1,8 @@
 package Controler;
 
-import Modelo.Elemento;
-import Modelo.Hero;
-import Modelo.Bloco;
+import Auxiliar.Desenhador;
+import Auxiliar.Fases;
+import Modelo.*;
 import Controler.Tela;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
@@ -42,33 +42,16 @@ public class ControleDeJogo {
                 if((j != i) && eTemp.getPosicao().estaNaMesmaPosicao(eTemp2.getPosicao())){
                     //Heroi x Varias Coisas
                     if(i == 0){
-                        Hero heroTemp = (Hero) eTemp;
-                        if(eTemp2.isbColetavel()){      /*Item*/
-                            e.remove(eTemp2);
-                        }else if(eTemp2.isbMortal()){   /*Inimigo*/
-                            e.remove(heroTemp);
-                        }else if(eTemp2.isbMovel()){    /*BlocoMovel*/
-                            Bloco blocoTemp = (Bloco) eTemp2;
-                            blocoTemp.empurra(heroTemp.apontaUltimaPos());
-                        }else if(!eTemp2.isbTransponivel()){    /*Bloco*/
-                            heroTemp.voltaAUltimaPosicao();
-                        }
+                        eTemp = (Hero) eTemp;
+                        eTemp.checaColisoes(eTemp2);
                     //Inimigos x Varias Coisas
                     }else if(eTemp.isbMortal()){
-                        if(!eTemp2.isbTransponivel() || eTemp2.isbColetavel() || eTemp2.isbMortal()){
-                            eTemp.voltaAUltimaPosicao();                /*Blocos ou Itens ou Inimigos*/
-                        }
+                        eTemp = (Inimigo) eTemp;
+                        eTemp.checaColisoes(eTemp2);
                     //Blocos x Varias Coisas
                     } else if(!eTemp.isbTransponivel()){
-                        if(eTemp.isbMovel()){   /*Bloco Movel x Varias Coisas*/
-                            if(!eTemp2.isbTransponivel() || eTemp2.isbColetavel()){ /*Blocos ou Itens*/
-                                eTemp.voltaAUltimaPosicao();
-                            }else if(eTemp2.isbMortal()){  /*Inimigo*/
-                                eTemp2.voltaAUltimaPosicao();
-                            }
-                        }else{  /*BlocoImovel x Qualquer Coisa*/
-                            eTemp2.voltaAUltimaPosicao();
-                        }
+                        eTemp = (Bloco) eTemp;
+                        eTemp.checaColisoes(eTemp2);
                     }
                 }
             }

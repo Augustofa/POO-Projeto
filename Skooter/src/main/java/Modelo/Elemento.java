@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
 public abstract class Elemento implements Serializable {
 
     protected ImageIcon iImage;
-    protected Posicao pPosicao;
+    public Posicao pPosicao;
     protected char direcaoOlhar;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
@@ -110,7 +110,11 @@ public abstract class Elemento implements Serializable {
     
     public void autoDesenho(){
         Desenhador.desenhar(this.iImage, pPosicao.getColuna(), pPosicao.getLinha());        
-    } 
+    }
+    
+    public void checaColisoes(Elemento eTemp){
+        
+    }
     
     public void voltaAUltimaPosicao(){
         this.pPosicao.volta();
