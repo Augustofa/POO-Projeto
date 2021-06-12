@@ -1,1 +1,1 @@
-# poo-projeto01
+Projeto 1 de POO - Implementação do jogo Skooter de MSX
