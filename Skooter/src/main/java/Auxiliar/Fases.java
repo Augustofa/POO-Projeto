@@ -535,7 +535,224 @@ public class Fases {
         Hero hHero = new Hero("skooter.png");
         hHero.setPosicao(5, 5);
         fase3.add(hHero);
-
+        
+        // BLOCOS VERMELHOS MÓVEIS
+        BlocoVermelhoMovel bvm1 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm1.setPosicao(1, 1);
+        fase3.add(bvm1);
+        
+        BlocoVermelhoMovel bvm2 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm2.setPosicao(1, 2);
+        fase3.add(bvm2);
+        
+        BlocoVermelhoMovel bvm3 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm3.setPosicao(1, 3);
+        fase3.add(bvm3);
+        
+        BlocoVermelhoMovel bvm4 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm4.setPosicao(1, 4);
+        fase3.add(bvm4);
+        
+        BlocoVermelhoMovel bvm5 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm5.setPosicao(1, 5);
+        fase3.add(bvm5);
+        
+        BlocoVermelhoMovel bvm6 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm6.setPosicao(1, 6);
+        fase3.add(bvm6);
+        
+        BlocoVermelhoMovel bvm7 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm7.setPosicao(1, 7);
+        fase3.add(bvm7);
+        
+        BlocoVermelhoMovel bvm8 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm8.setPosicao(1, 8);
+        fase3.add(bvm8);
+        
+        BlocoVermelhoMovel bvm9 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm9.setPosicao(1, 9);
+        fase3.add(bvm9);
+        
+        BlocoVermelhoMovel bvm10 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm10.setPosicao(2, 1);
+        fase3.add(bvm10);
+        
+        BlocoVermelhoMovel bvm11 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm11.setPosicao(2, 1);
+        fase3.add(bvm11);
+        
+        BlocoVermelhoMovel bvm12 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm12.setPosicao(3, 1);
+        fase3.add(bvm12);
+        
+        BlocoVermelhoMovel bvm13 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm13.setPosicao(4, 1);
+        fase3.add(bvm13);
+        
+        BlocoVermelhoMovel bvm14 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm14.setPosicao(5, 1);
+        fase3.add(bvm14);
+        
+        BlocoVermelhoMovel bvm15 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm15.setPosicao(6, 1);
+        fase3.add(bvm15);
+        
+        BlocoVermelhoMovel bvm16 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm16.setPosicao(7, 1);
+        fase3.add(bvm16);
+        
+        BlocoVermelhoMovel bvm17 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm17.setPosicao(8, 1);
+        fase3.add(bvm17);
+        
+        BlocoVermelhoMovel bvm18 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm18.setPosicao(9, 1);
+        fase3.add(bvm18);
+        
+        BlocoVermelhoMovel bvm19 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm19.setPosicao(9, 2);
+        fase3.add(bvm19);
+        
+        BlocoVermelhoMovel bvm20 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm20.setPosicao(9, 3);
+        fase3.add(bvm20);
+        
+        BlocoVermelhoMovel bvm21 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm21.setPosicao(9, 4);
+        fase3.add(bvm21);
+        
+        BlocoVermelhoMovel bvm22 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm22.setPosicao(9, 5);
+        fase3.add(bvm22);
+        
+        BlocoVermelhoMovel bvm23 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm23.setPosicao(9, 6);
+        fase3.add(bvm23);
+        
+        BlocoVermelhoMovel bvm24 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm24.setPosicao(9, 7);
+        fase3.add(bvm24);
+        
+        BlocoVermelhoMovel bvm25 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm25.setPosicao(9, 8);
+        fase3.add(bvm25);
+        
+        BlocoVermelhoMovel bvm26 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm26.setPosicao(9, 9);
+        fase3.add(bvm26);
+        
+        BlocoVermelhoMovel bvm27 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm27.setPosicao(1, 9);
+        fase3.add(bvm27);
+        
+        BlocoVermelhoMovel bvm28 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm28.setPosicao(2, 9);
+        fase3.add(bvm28);
+        
+        BlocoVermelhoMovel bvm29 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm29.setPosicao(3, 9);
+        fase3.add(bvm29);
+        
+        BlocoVermelhoMovel bvm30 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm30.setPosicao(4, 9);
+        fase3.add(bvm30);
+        
+        BlocoVermelhoMovel bvm31 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm31.setPosicao(5, 9);
+        fase3.add(bvm31);
+        
+        BlocoVermelhoMovel bvm32 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm32.setPosicao(6, 9);
+        fase3.add(bvm32);
+        
+        BlocoVermelhoMovel bvm33 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm33.setPosicao(7, 9);
+        fase3.add(bvm33);
+        
+        BlocoVermelhoMovel bvm34 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm34.setPosicao(8, 9);
+        fase3.add(bvm34);
+        
+        BlocoVermelhoMovel bvm35 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm35.setPosicao(3, 3);
+        fase3.add(bvm35);
+        
+        BlocoVermelhoMovel bvm36 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm36.setPosicao(3, 4);
+        fase3.add(bvm36);
+        
+        BlocoVermelhoMovel bvm37 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm37.setPosicao(3, 5);
+        fase3.add(bvm37);
+        
+        BlocoVermelhoMovel bvm38 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm38.setPosicao(3, 6);
+        fase3.add(bvm38);
+        
+        BlocoVermelhoMovel bvm39 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm39.setPosicao(3, 7);
+        fase3.add(bvm39);
+                
+        BlocoVermelhoMovel bvm40 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm40.setPosicao(4, 7);
+        fase3.add(bvm40);
+        
+        BlocoVermelhoMovel bvm41 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm41.setPosicao(5, 7);
+        fase3.add(bvm41);
+        
+        BlocoVermelhoMovel bvm42 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm42.setPosicao(6, 7);
+        fase3.add(bvm42);
+        
+        BlocoVermelhoMovel bvm43 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm43.setPosicao(7, 7);
+        fase3.add(bvm43);
+        
+        BlocoVermelhoMovel bvm44 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm44.setPosicao(7, 6);
+        fase3.add(bvm44);
+        
+        BlocoVermelhoMovel bvm45 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm45.setPosicao(7, 5);
+        fase3.add(bvm45);
+        
+        BlocoVermelhoMovel bvm46 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm46.setPosicao(7, 4);
+        fase3.add(bvm46);
+        
+        BlocoVermelhoMovel bvm47 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm47.setPosicao(7, 3);
+        fase3.add(bvm47);
+        
+        BlocoVermelhoMovel bvm48 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm48.setPosicao(6, 3);
+        fase3.add(bvm48);
+        
+        BlocoVermelhoMovel bvm49 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm49.setPosicao(5, 3);
+        fase3.add(bvm49);
+        
+        BlocoVermelhoMovel bvm50 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        bvm50.setPosicao(4, 3);
+        fase3.add(bvm50);
+        
+        Fruta bvm51 = new Fruta("lampada.png");
+        bvm51.setPosicao(5, 8);
+        fase3.add(bvm51);
+        
+        Fruta bvm52 = new Fruta("lanterna.png");
+        bvm52.setPosicao(5, 10);
+        fase3.add(bvm52);
+        
+        Fruta bvm53 = new Fruta("sol.png");
+        bvm53.setPosicao(5, 0);
+        fase3.add(bvm53);
+        
+        Fruta bvm54 = new Fruta("vela.png");
+        bvm54.setPosicao(5, 2);
+        fase3.add(bvm54);
+        
         return fase3;
     }
 
