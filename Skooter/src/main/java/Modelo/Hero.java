@@ -28,7 +28,16 @@ public class Hero extends Elemento implements Serializable{
             Desenhador.getTelaDoJogo().reiniciaFase();
         } else if (eTemp.isbMovel()) {          /*BlocoMovel*/
             Bloco blocoTemp = (Bloco) eTemp;
-            blocoTemp.movimenta(this.apontaUltimaPos());
+            if(!blocoTemp.movimenta(this.apontaUltimaPos())){
+                this.voltaAUltimaPosicao();
+            }
+        } else if (eTemp.isbTransponivel()) {   /*Seta*/
+           Seta setaTemp = (Seta) eTemp;
+            if(setaTemp.apontaOposto(this)){
+                this.voltaAUltimaPosicao();
+            } else{
+                eTemp.checaColisao(this);
+            }
         } else if (!eTemp.isbTransponivel()) {  /*Bloco*/
             this.voltaAUltimaPosicao();
         }

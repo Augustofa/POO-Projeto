@@ -142,15 +142,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         hHero = (Hero) eElementos.get(0);
     }
     
-    public boolean checaPosicao(int linha, int coluna){
+    public Elemento checaPosicao(int linha, int coluna){
         for(Elemento eTemp : eElementos){
             if(eTemp.pPosicao.getLinha() == linha){
                 if(eTemp.pPosicao.getColuna() == coluna){
-                    return true;
+                    return eTemp;
                 }
             }
         }
-        return false;
+        return null;
     }
     
     public ArrayList<Elemento> getArrayElementos(){

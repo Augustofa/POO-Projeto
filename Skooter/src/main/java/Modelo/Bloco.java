@@ -12,7 +12,8 @@ import Auxiliar.Desenhador;
  *
  * @author Augusto
  */
-public abstract class Bloco extends Elemento implements Serializable{
+public abstract class Bloco extends Elemento implements Serializable {
+
     protected Bloco(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bTransponivel = false;
@@ -21,38 +22,80 @@ public abstract class Bloco extends Elemento implements Serializable{
     public void autoDesenho() {
         super.autoDesenho();
     }
-    
-    public void checaColisao(Elemento eTemp){
-        if (this.isbMovel()) {      /*Bloco Movel x Varias Coisas*/
-            /*if(eTemp == Desenhador.getTelaDoJogo().getHeroi()){
+
+    public void checaColisao(Elemento eTemp) {
+        if (this.isbMovel()) {
+            /*Bloco Movel x Varias Coisas*/
+ /*if(eTemp == Desenhador.getTelaDoJogo().getHeroi()){
                 eTemp.voltaAUltimaPosicao();
-            } else*/ if(!eTemp.isbTransponivel() || eTemp.isbColetavel()) { /*Blocos ou Itens*/
+            } else*/ if (!eTemp.isbTransponivel() || eTemp.isbColetavel()) {
+                /*Blocos ou Itens*/
                 this.voltaAUltimaPosicao();
-            } else if (this.isbMortal()) {  /*Inimigo*/
+            } else if (this.isbMortal()) {
+                /*Inimigo*/
                 eTemp.voltaAUltimaPosicao();
             }
-        } else {        /*BlocoImovel x Qualquer Coisa*/
+        } else {
+            /*BlocoImovel x Qualquer Coisa*/
             eTemp.voltaAUltimaPosicao();
         }
     }
-    
-    public void movimenta(char direcaoHeroi){
-        if(direcaoHeroi == 'R'){
-            this.moveLeft();
-        } else if(direcaoHeroi == 'L'){
-            this.moveRight();
-        } else if(direcaoHeroi == 'U'){
-            this.moveDown();
-        } else if(direcaoHeroi == 'D'){
-            this.moveUp();
-        }
-        if(Desenhador.getTelaDoJogo().checaPosicao(this.pPosicao.getLinha(), this.pPosicao.getColuna())){
-            Desenhador.getTelaDoJogo().getHeroi().voltaAUltimaPosicao();
-//            this.checaColisao(Desenhador.getTelaDoJogo().getHeroi());
-        }
+
+    public boolean movimenta(char UltimaDirecaoHeroi) {
+        if (UltimaDirecaoHeroi == 'R') {
+            return this.moveLeft();
+        } else if (UltimaDirecaoHeroi == 'L') {
+            return this.moveRight();
+        } else if (UltimaDirecaoHeroi == 'U') {
+            return this.moveDown();
+        } else if (UltimaDirecaoHeroi == 'D') {
+            return this.moveUp();
+        } 
+        return false;
     }
     
-    public void checaMovimentos(){
-        
+    @Override
+    public boolean moveUp() {
+        if (this.checaPosicao(this.pPosicao.getLinha() - 1, this.pPosicao.getColuna())) {
+            return super.moveUp();
+        } else {
+            return false;
+        }
     }
+
+    @Override
+    public boolean moveDown() {
+        if (this.checaPosicao(this.pPosicao.getLinha() + 1, this.pPosicao.getColuna())) {
+            return super.moveDown();
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean moveRight() {
+        if (this.checaPosicao(this.pPosicao.getLinha(), this.pPosicao.getColuna() + 1)) {
+            return super.moveRight();
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean moveLeft() {
+        if (this.checaPosicao(this.pPosicao.getLinha(), this.pPosicao.getColuna() - 1)) {
+            return super.moveLeft();
+        } else {
+            return false;
+        }
+    }
+//    @Override
+//    public boolean voltaAUltimaPosicao() {
+//        Elemento eTemp = this.checaPosicao(this.pPosicao.getLinha(), this.pPosicao.getColuna());
+//        if (eTemp != null) {
+//            eTemp.voltaAUltimaPosicao();
+//        }
+//        super.voltaAUltimaPosicao();
+//        return true;
+//    }
 }

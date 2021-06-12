@@ -29,7 +29,7 @@ public abstract class Elemento implements Serializable {
     protected boolean bMovel;
        
     protected Elemento(String sNomeImagePNG) {
-        this.pPosicao = new Posicao(1, 1);
+        this.pPosicao = new Posicao(-1, -1);
         this.direcaoOlhar = 'D';
         this.bTransponivel = true;
         this.bMortal = false;
@@ -114,7 +114,20 @@ public abstract class Elemento implements Serializable {
     
     public abstract void checaColisao(Elemento eTemp);
     
-    public void voltaAUltimaPosicao(){
-        this.pPosicao.volta();
+    public boolean checaPosicao(int linha, int coluna) {
+        for (Elemento eTemp : Desenhador.getTelaDoJogo().getArrayElementos()){
+            if(eTemp != this){
+                if (eTemp.pPosicao.getLinha() == linha) {
+                    if (eTemp.pPosicao.getColuna() == coluna) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    
+    public boolean voltaAUltimaPosicao(){
+        return this.pPosicao.volta();
     }
 }
