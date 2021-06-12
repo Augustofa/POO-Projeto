@@ -112,9 +112,7 @@ public abstract class Elemento implements Serializable {
         Desenhador.desenhar(this.iImage, pPosicao.getColuna(), pPosicao.getLinha());        
     }
     
-    public void checaColisoes(Elemento eTemp){
-        
-    }
+    public abstract void checaColisao(Elemento eTemp);
     
     public void voltaAUltimaPosicao(){
         this.pPosicao.volta();

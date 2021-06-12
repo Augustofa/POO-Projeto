@@ -22,7 +22,7 @@ public abstract class Bloco extends Elemento implements Serializable{
         super.autoDesenho();
     }
     
-    public void checaColisoes(Elemento eTemp){
+    public void checaColisao(Elemento eTemp){
         if (this.isbMovel()) {      /*Bloco Movel x Varias Coisas*/
             /*if(eTemp == Desenhador.getTelaDoJogo().getHeroi()){
                 eTemp.voltaAUltimaPosicao();
@@ -48,7 +48,7 @@ public abstract class Bloco extends Elemento implements Serializable{
         }
         if(Desenhador.getTelaDoJogo().checaPosicao(this.pPosicao.getLinha(), this.pPosicao.getColuna())){
             Desenhador.getTelaDoJogo().getHeroi().voltaAUltimaPosicao();
-//            this.checaColisoes(Desenhador.getTelaDoJogo().getHeroi());
+//            this.checaColisao(Desenhador.getTelaDoJogo().getHeroi());
         }
     }
     

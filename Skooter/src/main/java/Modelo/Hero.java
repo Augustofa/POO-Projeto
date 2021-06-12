@@ -20,7 +20,7 @@ public class Hero extends Elemento implements Serializable{
         super(sNomeImagePNG);
     }
     
-    public void checaColisoes(Elemento eTemp) {
+    public void checaColisao(Elemento eTemp) {
         if (eTemp.isbColetavel()) {             /*Item*/
             Desenhador.getTelaDoJogo().removeElemento(eTemp);
         } else if (eTemp.isbMortal()) {         /*Inimigo*/

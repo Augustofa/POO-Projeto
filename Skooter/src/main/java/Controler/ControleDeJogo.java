@@ -43,15 +43,15 @@ public class ControleDeJogo {
                     //Heroi x Varias Coisas
                     if(i == 0){
                         eTemp = (Hero) eTemp;
-                        eTemp.checaColisoes(eTemp2);
+                        eTemp.checaColisao(eTemp2);
                     //Inimigos x Varias Coisas
                     }else if(eTemp.isbMortal()){
                         eTemp = (Inimigo) eTemp;
-                        eTemp.checaColisoes(eTemp2);
+                        eTemp.checaColisao(eTemp2);
                     //Blocos x Varias Coisas
                     } else if(!eTemp.isbTransponivel()){
                         eTemp = (Bloco) eTemp;
-                        eTemp.checaColisoes(eTemp2);
+                        eTemp.checaColisao(eTemp2);
                     }
                 }
             }

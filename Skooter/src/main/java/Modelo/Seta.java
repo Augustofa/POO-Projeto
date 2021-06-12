@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Auxiliar.Desenhador;
 import java.io.Serializable;
 
 /**
@@ -22,6 +23,11 @@ public class Seta extends Elemento implements Serializable{
 
     public void autoDesenho() {
         super.autoDesenho();
-    }    
+    }
+    
+    @Override
+    public void checaColisao(Elemento eTemp){
+        //Chama metodo pra movimentar o outro elemento na direcao certa
+    }
 }
 

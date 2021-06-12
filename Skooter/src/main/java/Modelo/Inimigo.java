@@ -17,7 +17,7 @@ public class Inimigo extends Elemento implements Serializable {
         this.bMortal = true;
     }
     
-    public void checaColisoes(Elemento eTemp) {
+    public void checaColisao(Elemento eTemp) {
         if (!eTemp.isbTransponivel() || eTemp.isbColetavel() || eTemp.isbMortal()) {
             this.voltaAUltimaPosicao();                /*Blocos ou Itens ou Inimigos*/
         }

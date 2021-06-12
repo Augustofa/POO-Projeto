@@ -17,4 +17,11 @@ public class Fruta extends Elemento implements Serializable{
     public void autoDesenho() {
         super.autoDesenho();
     }
+    
+    @Override
+    public void checaColisao(Elemento eTemp){
+        if(eTemp != Desenhador.getTelaDoJogo().getHeroi()){
+            eTemp.voltaAUltimaPosicao();
+        }
+    }
 }
