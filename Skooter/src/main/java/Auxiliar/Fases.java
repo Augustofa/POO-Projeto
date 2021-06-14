@@ -762,45 +762,61 @@ public class Fases {
         hHero.setPosicao(4, 4);
         faseTeste.add(hHero);
 
-        RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
-        roboVerde1.setPosicao(10, 9);
-        faseTeste.add(roboVerde1);
-
-        RoboVerde roboVerde2 = new RoboVerde("roboVerde.png");
-        roboVerde2.setPosicao(0, 9);
-        faseTeste.add(roboVerde2);
-
-        RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo.setPosicao(10, 1);
-        faseTeste.add(roboAmarelo);
-
         BlocoVermelho blocoImovel1 = new BlocoVermelho("blocoVermelho.png");
-        blocoImovel1.setPosicao(3, 4);
+        blocoImovel1.setPosicao(1, 0);
         faseTeste.add(blocoImovel1);
-
+        
         BlocoVermelho blocoImovel2 = new BlocoVermelho("blocoVermelho.png");
-        blocoImovel2.setPosicao(3, 5);
+        blocoImovel2.setPosicao(7, 0);
         faseTeste.add(blocoImovel2);
 
         BlocoVermelho blocoImovel3 = new BlocoVermelho("blocoVermelho.png");
-        blocoImovel3.setPosicao(4, 6);
+        blocoImovel3.setPosicao(8, 1);
         faseTeste.add(blocoImovel3);
+        
+        BlocoVermelho blocoImovel4 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel4.setPosicao(10, 1);
+        faseTeste.add(blocoImovel4);
 
-        BlocoVerdeMovel blocoMovel2 = new BlocoVerdeMovel("blocoVerdeMovel.png");
-        blocoMovel2.setPosicao(8, 3);
-        faseTeste.add(blocoMovel2);
+        BlocoVermelho blocoImovel5 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel5.setPosicao(3, 2);
+        faseTeste.add(blocoImovel5);
+        
+        BlocoVermelho blocoImovel6 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel6.setPosicao(5, 2);
+        faseTeste.add(blocoImovel6);
 
-        BlocoVerdeMovel blocoMovel3 = new BlocoVerdeMovel("blocoVerdeMovel.png");
-        blocoMovel3.setPosicao(9, 7);
-        faseTeste.add(blocoMovel3);
+        BlocoVermelho blocoImovel7 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel7.setPosicao(0, 3);
+        faseTeste.add(blocoImovel7);
+        
+        BlocoVermelho blocoImovel8 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel8.setPosicao(6, 3);
+        faseTeste.add(blocoImovel8);
 
-        Fruta cereja = new Fruta("cereja.png");
-        cereja.setPosicao(5, 6);
-        faseTeste.add(cereja);
+        BlocoVermelho blocoImovel9 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel9.setPosicao(2, 5);
+        faseTeste.add(blocoImovel9);
+        
+        BlocoVermelho blocoImovel10 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel10.setPosicao(0, 7);
+        faseTeste.add(blocoImovel10);
 
-        Fruta limao = new Fruta("limao.png");
-        limao.setPosicao(7, 8);
-        faseTeste.add(limao);
+        BlocoVermelho blocoImovel11 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel11.setPosicao(8, 7);
+        faseTeste.add(blocoImovel11);
+        
+        BlocoVermelho blocoImovel12 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel12.setPosicao(1, 8);
+        faseTeste.add(blocoImovel12);
+
+        BlocoVermelho blocoImovel13 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel13.setPosicao(5, 8);
+        faseTeste.add(blocoImovel13);
+        
+        BlocoVermelho blocoImovel14 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel14.setPosicao(3, 10);
+        faseTeste.add(blocoImovel14);
 
         return faseTeste;
     }
