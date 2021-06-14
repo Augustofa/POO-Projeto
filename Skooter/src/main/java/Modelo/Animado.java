@@ -28,7 +28,7 @@ public abstract class Animado extends Elemento{
         
         try {
             //Imagem olhando pra cima
-            iImageU = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
+            iImageU = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG.replace(".", "U."));
             Image img = iImageU.getImage();
             BufferedImage bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
             Graphics g = bi.createGraphics();
@@ -44,7 +44,7 @@ public abstract class Animado extends Elemento{
             iImageD = new ImageIcon(bi);
             
             //Imagem olhando pra esquerda
-            iImageL = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
+            iImageL = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG.replace(".", "L."));
             img = iImageL.getImage();
             bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
             g = bi.createGraphics();
@@ -52,7 +52,7 @@ public abstract class Animado extends Elemento{
             iImageL = new ImageIcon(bi);
             
             //Imagem olhando pra direita
-            iImageR = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
+            iImageR = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG.replace(".", "R."));
             img = iImageR.getImage();
             bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
             g = bi.createGraphics();
