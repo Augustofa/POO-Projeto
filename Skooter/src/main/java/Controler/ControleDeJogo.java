@@ -1,7 +1,6 @@
 package Controler;
 
 import Auxiliar.Desenhador;
-import Auxiliar.Fases;
 import Modelo.*;
 import Controler.Tela;
 import Auxiliar.Posicao;
@@ -42,8 +41,18 @@ public class ControleDeJogo {
                 if((j != i) && eTemp.getPosicao().estaNaMesmaPosicao(eTemp2.getPosicao())){
                     //Heroi x Varias Coisas
                     if(i == 0){
-                        eTemp = (Hero) eTemp;
-                        eTemp.checaColisao(eTemp2);
+                        Hero heroTemp = (Hero) eTemp;
+                        heroTemp.checaColisao(eTemp2);
+                        /*Caso o heroi colete todas os itens*/
+                        if(heroTemp.getItensColetados() == 4){
+                            Desenhador.getTelaDoJogo().proximaFase();
+                            return;
+                        }
+                        /*Caso as vidas acabem*/
+                        if(Desenhador.getTelaDoJogo().getVidas() == 0){
+                            Desenhador.getTelaDoJogo().gameOver();
+                            return;
+                        }
                     //Inimigos x Varias Coisas
                     }else if(eTemp.isbMortal()){
                         eTemp = (Inimigo) eTemp;

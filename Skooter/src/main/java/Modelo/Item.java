@@ -6,9 +6,9 @@ import Controler.Tela;
 import java.awt.Graphics;
 import java.io.Serializable;
 
-public class Fruta extends Elemento implements Serializable{
+public class Item extends Elemento implements Serializable{
     
-    public Fruta(String sNomeImagePNG) {
+    public Item(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bTransponivel = true;
         this.bColetavel = true;

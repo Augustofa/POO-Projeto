@@ -15,7 +15,9 @@ import javax.swing.JPanel;
  *
  * @author Junio
  */
-public class Hero extends Elemento implements Serializable{
+public class Hero extends Animado implements Serializable{
+    private int itensColetados = 0;
+    
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG);
     }
@@ -23,9 +25,14 @@ public class Hero extends Elemento implements Serializable{
     public void checaColisao(Elemento eTemp) {
         if (eTemp.isbColetavel()) {             /*Item*/
             Desenhador.getTelaDoJogo().removeElemento(eTemp);
+            this.itensColetados++;
         } else if (eTemp.isbMortal()) {         /*Inimigo*/
             //Morte do Heroi
-            Desenhador.getTelaDoJogo().reiniciaFase();
+            this.itensColetados = 0;
+            int vidasTemp = Desenhador.getTelaDoJogo().tiraVida();
+            if(vidasTemp > 0){
+                Desenhador.getTelaDoJogo().reiniciaFase();
+            }
         } else if (eTemp.isbMovel()) {          /*BlocoMovel*/
             Bloco blocoTemp = (Bloco) eTemp;
             if(!blocoTemp.movimenta(this.apontaUltimaPos())){
@@ -41,6 +48,10 @@ public class Hero extends Elemento implements Serializable{
         } else if (!eTemp.isbTransponivel()) {  /*Bloco*/
             this.voltaAUltimaPosicao();
         }
+    }
+
+    public int getItensColetados() {
+        return itensColetados;
     }
     
     public void destroiElemento(ArrayList<Elemento> e){

@@ -22,6 +22,7 @@ public abstract class Elemento implements Serializable {
     protected ImageIcon iImage;
     public Posicao pPosicao;
     protected char direcaoOlhar;
+    protected boolean bAnimado;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
     protected boolean bColetavel;
@@ -31,6 +32,7 @@ public abstract class Elemento implements Serializable {
     protected Elemento(String sNomeImagePNG) {
         this.pPosicao = new Posicao(-1, -1);
         this.direcaoOlhar = 'D';
+        this.bAnimado = false;
         this.bTransponivel = true;
         this.bMortal = false;
         this.bColetavel = false;

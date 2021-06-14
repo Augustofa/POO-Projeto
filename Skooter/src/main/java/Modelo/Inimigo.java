@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author daniel
  */
-public class Inimigo extends Elemento implements Serializable {
+public class Inimigo extends Animado implements Serializable {
     
     public Inimigo(String sNomeImagePNG) {
         super(sNomeImagePNG);

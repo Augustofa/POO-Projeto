@@ -10,6 +10,9 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 import java.util.zip.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 /**
  *
  * @author junio
@@ -17,6 +20,7 @@ import java.util.zip.*;
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
     private Hero hHero;
+    private int vidas = 3;
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
@@ -38,11 +42,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Este array vai guardar os elementos graficos*/
         eElementos = new ArrayList<>(100);
         /*Inicia a primeira fase*/
-        Fases.proximaFase(eElementos);
-        hHero = (Hero) eElementos.get(0);
+        this.proximaFase();
+
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
-        
-           
     }
 
 /*--------------------------------------------------*/
@@ -137,9 +139,20 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
     }
     
+    public void proximaFase(){
+        Fases.proximaFase(eElementos);
+        hHero = (Hero) eElementos.get(0);
+    }
+    
     public void reiniciaFase(){
         Fases.resetaFase(eElementos);
         hHero = (Hero) eElementos.get(0);
+    }
+    
+    public void gameOver(){
+        Fases.gameOver(eElementos);
+        hHero = (Hero) eElementos.get(0);
+        this.vidas = 3;
     }
     
     public Elemento checaPosicao(int linha, int coluna){
@@ -159,6 +172,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     public Hero getHeroi(){
         return hHero;
+    }
+    
+    public int getVidas(){
+        return vidas;
+    }
+    
+    public int tiraVida(){
+        vidas--;
+        return vidas;
     }
 
     public void mousePressed(MouseEvent e) {
