@@ -766,6 +766,22 @@ public class Fases {
         bvm54.setPosicao(5, 2);
         fase3.add(bvm54);
         
+        RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
+        roboAmarelo.setPosicao(0, 5);
+        fase3.add(roboAmarelo);
+        
+        RoboAmarelo roboAmarelo2 = new RoboAmarelo("roboAmarelo.png", hHero);
+        roboAmarelo2.setPosicao(2, 5);
+        fase3.add(roboAmarelo2);
+        
+        RoboAmarelo roboAmarelo3 = new RoboAmarelo("roboAmarelo.png", hHero);
+        roboAmarelo3.setPosicao(8, 5);
+        fase3.add(roboAmarelo3);
+        
+        RoboAmarelo roboAmarelo4 = new RoboAmarelo("roboAmarelo.png", hHero);
+        roboAmarelo4.setPosicao(10, 5);
+        fase3.add(roboAmarelo4);
+        
         return fase3;
     }
 

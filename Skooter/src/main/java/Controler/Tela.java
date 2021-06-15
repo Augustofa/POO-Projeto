@@ -86,7 +86,22 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             getBufferStrategy().show();
         }
     }
-
+    
+    public void tocarMusica(){
+        
+            try{
+                String currentPath = new java.io.File(".").getCanonicalPath();
+                String soundtrackPath = currentPath + File.separator + "soundtrack.wav";
+                
+                Sound soundtrack = new Sound(soundtrackPath);
+                soundtrack.play();
+           
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+       
+    }
+    
     public void go() {
         TimerTask redesenhar = new TimerTask() {
             public void run() {
