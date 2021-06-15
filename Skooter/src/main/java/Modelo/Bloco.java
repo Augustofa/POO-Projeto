@@ -38,6 +38,20 @@ public abstract class Bloco extends Elemento implements Serializable {
             eTemp.voltaAUltimaPosicao();
         }
     }
+    
+    @Override
+    public boolean checaPosicao(int linha, int coluna) {
+        for (Elemento eTemp : Desenhador.getTelaDoJogo().getArrayElementos()){
+            if(eTemp != this){
+                if (eTemp.pPosicao.getLinha() == linha) {
+                    if (eTemp.pPosicao.getColuna() == coluna) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
     public boolean movimenta(char UltimaDirecaoHeroi) {
         if (UltimaDirecaoHeroi == 'R') {

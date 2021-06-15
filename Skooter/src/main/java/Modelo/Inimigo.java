@@ -26,6 +26,23 @@ public class Inimigo extends Animado implements Serializable {
         }
     }
     
+    public boolean checaPosicao(int linha, int coluna) {
+        for (Elemento eTemp : Desenhador.getTelaDoJogo().getArrayElementos()){
+            if(eTemp != this){
+                if (eTemp.pPosicao.getLinha() == linha) {
+                    if (eTemp.pPosicao.getColuna() == coluna) {
+                        if(eTemp == Desenhador.getTelaDoJogo().getHeroi()){
+                            return true;
+                        } else{
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    
     public boolean movimenta(){
         int randomNum = ThreadLocalRandom.current().nextInt(1, 5);
         if(randomNum == 1){
