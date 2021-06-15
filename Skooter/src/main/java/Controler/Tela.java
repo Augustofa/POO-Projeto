@@ -68,14 +68,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Desenha cenário*/
         try {
             //Pega a imagem fora do loop para um aumento gigante na performance
-            Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + "backgroundTeste.png");
-            g2.drawImage(newImage, 0, 0, null);  
-            /*for (int i = 0; i < Consts.RES; i++) {
-                for (int j = 0; j < Consts.RES; j++) {
-                    /*Linha para alterar o background*
-                    g2.drawImage(newImage,j*Consts.CELL_SIDE, i*Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);  
-                }
-            }*/
+            Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + Fases.backgroundImg);
+            g2.drawImage(newImage, 0, 0, null);
         } catch (IOException ex) {
             Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
         }

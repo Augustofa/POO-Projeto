@@ -7,6 +7,7 @@ package Auxiliar;
 
 import Modelo.*;
 import Controler.*;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -15,6 +16,7 @@ import java.util.ArrayList;
  */
 public class Fases {
     static int fase = 0;
+    public static String backgroundImg;
     public static void proximaFase(ArrayList<Elemento> eElementos) {
         eElementos.clear();
         fase++;
@@ -45,13 +47,15 @@ public class Fases {
     }
     
     private static ArrayList<Elemento> primeiraFase() {
-        ArrayList<Elemento> fase1 = new ArrayList<>();
+        backgroundImg = "background1.png";
 
+        ArrayList<Elemento> fase1 = new ArrayList<>();
+        
         // HEROI
         Hero hHero = new Hero("skooter.png");
         hHero.setPosicao(4, 4);
         fase1.add(hHero);
-
+        
         // ROBOS
         RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
         roboVerde1.setPosicao(10, 9);
@@ -288,8 +292,10 @@ public class Fases {
     }
     
     public static ArrayList<Elemento> segundaFase() {
-        ArrayList<Elemento> fase2 = new ArrayList<>();
+        backgroundImg = "background2.png";
 
+        ArrayList<Elemento> fase2 = new ArrayList<>();
+        
         // HEROI
         Hero hHero = new Hero("skooter.png");
         hHero.setPosicao(5, 5);
@@ -534,8 +540,10 @@ public class Fases {
     }
 
     public static ArrayList<Elemento> terceiraFase() {
+        backgroundImg = "background2.png";
+        
         ArrayList<Elemento> fase3 = new ArrayList<>();
-
+        
         // HERÓI
         Hero hHero = new Hero("skooter.png");
         hHero.setPosicao(5, 5);
@@ -762,7 +770,10 @@ public class Fases {
     }
 
     public static ArrayList<Elemento> quartaFase() {
+        backgroundImg = "background2.png";
+        
         ArrayList<Elemento> quartaFase = new ArrayList<>();
+        
         Hero hHero = new Hero("skooter.png");
         hHero.setPosicao(4, 5);
         quartaFase.add(hHero);
