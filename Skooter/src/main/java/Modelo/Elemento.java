@@ -116,6 +116,7 @@ public abstract class Elemento implements Serializable {
     
     public abstract void checaColisao(Elemento eTemp);
     
+    //Retorna false se tiver um elemento na posicao recebida
     public boolean checaPosicao(int linha, int coluna) {
         for (Elemento eTemp : Desenhador.getTelaDoJogo().getArrayElementos()){
             if(eTemp != this){
@@ -127,6 +128,23 @@ public abstract class Elemento implements Serializable {
             }
         }
         return true;
+    }
+    
+    public char apontaUltimaPos() {
+        if (this.pPosicao.getLinhaAnterior() == this.pPosicao.getLinha()) {
+            if (this.pPosicao.getColuna() < this.pPosicao.getColunaAnterior()) {
+                return 'R';
+            } else if (this.pPosicao.getColuna() > this.pPosicao.getColunaAnterior()) {
+                return 'L';
+            }
+        } else if (this.pPosicao.getColunaAnterior() == this.pPosicao.getColuna()) {
+            if (this.pPosicao.getLinha() < this.pPosicao.getLinhaAnterior()) {
+                return 'D';
+            } else if (this.pPosicao.getLinha() > this.pPosicao.getLinhaAnterior()) {
+                return 'U';
+            }
+        }
+        return 'M';
     }
     
     public boolean voltaAUltimaPosicao(){

@@ -26,12 +26,10 @@ public abstract class Bloco extends Elemento implements Serializable {
     public void checaColisao(Elemento eTemp) {
         if (this.isbMovel()) {
             /*Bloco Movel x Varias Coisas*/
- /*if(eTemp == Desenhador.getTelaDoJogo().getHeroi()){
-                eTemp.voltaAUltimaPosicao();
-            } else*/ if (!eTemp.isbTransponivel() || eTemp.isbColetavel()) {
+            if (!eTemp.isbTransponivel() || eTemp.isbColetavel()) {
                 /*Blocos ou Itens*/
                 this.voltaAUltimaPosicao();
-            } else if (this.isbMortal()) {
+            } else if (eTemp.isbMortal()) {
                 /*Inimigo*/
                 eTemp.voltaAUltimaPosicao();
             }
@@ -89,13 +87,4 @@ public abstract class Bloco extends Elemento implements Serializable {
             return false;
         }
     }
-//    @Override
-//    public boolean voltaAUltimaPosicao() {
-//        Elemento eTemp = this.checaPosicao(this.pPosicao.getLinha(), this.pPosicao.getColuna());
-//        if (eTemp != null) {
-//            eTemp.voltaAUltimaPosicao();
-//        }
-//        super.voltaAUltimaPosicao();
-//        return true;
-//    }
 }

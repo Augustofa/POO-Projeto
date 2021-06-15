@@ -78,20 +78,20 @@ public class Hero extends Animado implements Serializable{
         }
     }
     
-    public char apontaUltimaPos(){
-        if(this.pPosicao.getLinhaAnterior() == this.pPosicao.getLinha()){
-            if(this.pPosicao.getColuna() < this.pPosicao.getColunaAnterior()){
-                return 'R';
-            }else if(this.pPosicao.getColuna() > this.pPosicao.getColunaAnterior()){
-                return 'L';
-            }
-        }else if(this.pPosicao.getColunaAnterior() == this.pPosicao.getColuna()){
-            if(this.pPosicao.getLinha() < this.pPosicao.getLinhaAnterior()){
-                return 'D';
-            }else if(this.pPosicao.getLinha() > this.pPosicao.getLinhaAnterior()){
-                return 'U';
-            }
-        }
-        return 'M';
-    }
+//    public char apontaUltimaPos(){
+//        if(this.pPosicao.getLinhaAnterior() == this.pPosicao.getLinha()){
+//            if(this.pPosicao.getColuna() < this.pPosicao.getColunaAnterior()){
+//                return 'R';
+//            }else if(this.pPosicao.getColuna() > this.pPosicao.getColunaAnterior()){
+//                return 'L';
+//            }
+//        }else if(this.pPosicao.getColunaAnterior() == this.pPosicao.getColuna()){
+//            if(this.pPosicao.getLinha() < this.pPosicao.getLinhaAnterior()){
+//                return 'D';
+//            }else if(this.pPosicao.getLinha() > this.pPosicao.getLinhaAnterior()){
+//                return 'U';
+//            }
+//        }
+//        return 'M';
+//    }
 }

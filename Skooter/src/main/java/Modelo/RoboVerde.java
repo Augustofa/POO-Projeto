@@ -26,16 +26,31 @@ public class RoboVerde extends Inimigo implements Serializable{
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){
-                if(direcaoOlhar == 'L'){
-                    moveRight();
-                } else{
-                    moveLeft();
-                }
+                movimenta();
             }
-        }, 0, 500);
+        }, 0, 1000);
     }
     
     public void autoDesenho(){          
         super.autoDesenho();
+    }
+    
+    public boolean movimenta() {
+        if (contadorRandom != 3) {
+            contadorRandom++;
+            if (direcaoOlhar == 'D') {
+                return moveLeft();
+            } else if (direcaoOlhar == 'L') {
+                return moveUp();
+            } else if (direcaoOlhar == 'U') {
+                return moveRight();
+            } else if (direcaoOlhar == 'R') {
+                return moveDown();
+            }
+            return false;
+        } else {
+            contadorRandom = 0;
+            return super.movimenta();
+        }
     }
 }

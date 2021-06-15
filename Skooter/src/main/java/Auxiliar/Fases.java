@@ -57,17 +57,17 @@ public class Fases {
         fase1.add(hHero);
         
         // ROBOS
-        RoboVerde roboVerde1 = new RoboVerde("roboVerde.png");
-        roboVerde1.setPosicao(10, 9);
-        fase1.add(roboVerde1);
+        RoboRosa roboRosa1 = new RoboRosa("roboRosa.png", hHero);
+        roboRosa1.setPosicao(10, 9);
+        fase1.add(roboRosa1);
 
-        RoboVerde roboVerde2 = new RoboVerde("roboVerde.png");
-        roboVerde2.setPosicao(0, 9);
-        fase1.add(roboVerde2);
+        RoboRosa roboRosa2 = new RoboRosa("roboRosa.png", hHero);
+        roboRosa2.setPosicao(0, 9);
+        fase1.add(roboRosa2);
 
-        RoboVerde roboVerde3 = new RoboVerde("roboVerde.png");
-        roboVerde3.setPosicao(2, 0);
-        fase1.add(roboVerde3);
+        RoboAzul roboAzul = new RoboAzul("roboAzul.png", hHero);
+        roboAzul.setPosicao(2, 0);
+        fase1.add(roboAzul);
 
         RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
         roboAmarelo.setPosicao(10, 1);
@@ -310,13 +310,13 @@ public class Fases {
         roboVerde2.setPosicao(1, 9);
         fase2.add(roboVerde2);
 
-        RoboVerde roboVerde3 = new RoboVerde("roboVerde.png");
-        roboVerde3.setPosicao(9, 1);
-        fase2.add(roboVerde3);
+        RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
+        roboAmarelo.setPosicao(9, 9);
+        fase2.add(roboAmarelo);
 
-        RoboVerde roboVerde4 = new RoboVerde("roboVerde.png");
-        roboVerde4.setPosicao(9, 9);
-        fase2.add(roboVerde4);
+        RoboRosa roboRosa = new RoboRosa("roboRosa.png", hHero);
+        roboRosa.setPosicao(9, 1);
+        fase2.add(roboRosa);
 
         // SETAS PARA CIMA
         Seta setaCima1 = new Seta("setacima.png", 'U');
@@ -540,7 +540,7 @@ public class Fases {
     }
 
     public static ArrayList<Elemento> terceiraFase() {
-        backgroundImg = "background2.png";
+        backgroundImg = "background3.png";
         
         ArrayList<Elemento> fase3 = new ArrayList<>();
         
@@ -550,203 +550,195 @@ public class Fases {
         fase3.add(hHero);
         
         // BLOCOS VERMELHOS MÓVEIS
-        BlocoVermelhoMovel bvm1 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm1 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm1.setPosicao(1, 1);
         fase3.add(bvm1);
         
-        BlocoVermelhoMovel bvm2 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm2 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm2.setPosicao(1, 2);
         fase3.add(bvm2);
         
-        BlocoVermelhoMovel bvm3 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm3 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm3.setPosicao(1, 3);
         fase3.add(bvm3);
         
-        BlocoVermelhoMovel bvm4 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm4 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm4.setPosicao(1, 4);
         fase3.add(bvm4);
         
-        BlocoVermelhoMovel bvm5 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm5 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm5.setPosicao(1, 5);
         fase3.add(bvm5);
         
-        BlocoVermelhoMovel bvm6 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm6 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm6.setPosicao(1, 6);
         fase3.add(bvm6);
         
-        BlocoVermelhoMovel bvm7 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm7 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm7.setPosicao(1, 7);
         fase3.add(bvm7);
         
-        BlocoVermelhoMovel bvm8 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm8 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm8.setPosicao(1, 8);
         fase3.add(bvm8);
         
-        BlocoVermelhoMovel bvm9 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm9 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm9.setPosicao(1, 9);
         fase3.add(bvm9);
         
-        BlocoVermelhoMovel bvm10 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm10 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm10.setPosicao(2, 1);
         fase3.add(bvm10);
         
-        BlocoVermelhoMovel bvm11 = new BlocoVermelhoMovel("blocovermelhomovel.png");
-        bvm11.setPosicao(2, 1);
-        fase3.add(bvm11);
-        
-        BlocoVermelhoMovel bvm12 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm12 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm12.setPosicao(3, 1);
         fase3.add(bvm12);
         
-        BlocoVermelhoMovel bvm13 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm13 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm13.setPosicao(4, 1);
         fase3.add(bvm13);
         
-        BlocoVermelhoMovel bvm14 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm14 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm14.setPosicao(5, 1);
         fase3.add(bvm14);
         
-        BlocoVermelhoMovel bvm15 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm15 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm15.setPosicao(6, 1);
         fase3.add(bvm15);
         
-        BlocoVermelhoMovel bvm16 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm16 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm16.setPosicao(7, 1);
         fase3.add(bvm16);
         
-        BlocoVermelhoMovel bvm17 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm17 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm17.setPosicao(8, 1);
         fase3.add(bvm17);
         
-        BlocoVermelhoMovel bvm18 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm18 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm18.setPosicao(9, 1);
         fase3.add(bvm18);
         
-        BlocoVermelhoMovel bvm19 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm19 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm19.setPosicao(9, 2);
         fase3.add(bvm19);
         
-        BlocoVermelhoMovel bvm20 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm20 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm20.setPosicao(9, 3);
         fase3.add(bvm20);
         
-        BlocoVermelhoMovel bvm21 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm21 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm21.setPosicao(9, 4);
         fase3.add(bvm21);
         
-        BlocoVermelhoMovel bvm22 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm22 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm22.setPosicao(9, 5);
         fase3.add(bvm22);
         
-        BlocoVermelhoMovel bvm23 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm23 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm23.setPosicao(9, 6);
         fase3.add(bvm23);
         
-        BlocoVermelhoMovel bvm24 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm24 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm24.setPosicao(9, 7);
         fase3.add(bvm24);
         
-        BlocoVermelhoMovel bvm25 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm25 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm25.setPosicao(9, 8);
         fase3.add(bvm25);
         
-        BlocoVermelhoMovel bvm26 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm26 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm26.setPosicao(9, 9);
         fase3.add(bvm26);
         
-        BlocoVermelhoMovel bvm27 = new BlocoVermelhoMovel("blocovermelhomovel.png");
-        bvm27.setPosicao(1, 9);
-        fase3.add(bvm27);
-        
-        BlocoVermelhoMovel bvm28 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm28 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm28.setPosicao(2, 9);
         fase3.add(bvm28);
         
-        BlocoVermelhoMovel bvm29 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm29 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm29.setPosicao(3, 9);
         fase3.add(bvm29);
         
-        BlocoVermelhoMovel bvm30 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm30 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm30.setPosicao(4, 9);
         fase3.add(bvm30);
         
-        BlocoVermelhoMovel bvm31 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm31 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm31.setPosicao(5, 9);
         fase3.add(bvm31);
         
-        BlocoVermelhoMovel bvm32 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm32 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm32.setPosicao(6, 9);
         fase3.add(bvm32);
         
-        BlocoVermelhoMovel bvm33 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm33 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm33.setPosicao(7, 9);
         fase3.add(bvm33);
         
-        BlocoVermelhoMovel bvm34 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm34 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm34.setPosicao(8, 9);
         fase3.add(bvm34);
         
-        BlocoVermelhoMovel bvm35 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm35 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm35.setPosicao(3, 3);
         fase3.add(bvm35);
         
-        BlocoVermelhoMovel bvm36 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm36 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm36.setPosicao(3, 4);
         fase3.add(bvm36);
         
-        BlocoVermelhoMovel bvm37 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm37 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm37.setPosicao(3, 5);
         fase3.add(bvm37);
         
-        BlocoVermelhoMovel bvm38 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm38 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm38.setPosicao(3, 6);
         fase3.add(bvm38);
         
-        BlocoVermelhoMovel bvm39 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm39 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm39.setPosicao(3, 7);
         fase3.add(bvm39);
                 
-        BlocoVermelhoMovel bvm40 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm40 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm40.setPosicao(4, 7);
         fase3.add(bvm40);
         
-        BlocoVermelhoMovel bvm41 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm41 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm41.setPosicao(5, 7);
         fase3.add(bvm41);
         
-        BlocoVermelhoMovel bvm42 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm42 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm42.setPosicao(6, 7);
         fase3.add(bvm42);
         
-        BlocoVermelhoMovel bvm43 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm43 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm43.setPosicao(7, 7);
         fase3.add(bvm43);
         
-        BlocoVermelhoMovel bvm44 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm44 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm44.setPosicao(7, 6);
         fase3.add(bvm44);
         
-        BlocoVermelhoMovel bvm45 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm45 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm45.setPosicao(7, 5);
         fase3.add(bvm45);
         
-        BlocoVermelhoMovel bvm46 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm46 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm46.setPosicao(7, 4);
         fase3.add(bvm46);
         
-        BlocoVermelhoMovel bvm47 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm47 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm47.setPosicao(7, 3);
         fase3.add(bvm47);
         
-        BlocoVermelhoMovel bvm48 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm48 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm48.setPosicao(6, 3);
         fase3.add(bvm48);
         
-        BlocoVermelhoMovel bvm49 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm49 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm49.setPosicao(5, 3);
         fase3.add(bvm49);
         
-        BlocoVermelhoMovel bvm50 = new BlocoVermelhoMovel("blocovermelhomovel.png");
+        BlocoVermelhoMovel bvm50 = new BlocoVermelhoMovel("blocoVermelhoMovel.png");
         bvm50.setPosicao(4, 3);
         fase3.add(bvm50);
         
@@ -766,290 +758,292 @@ public class Fases {
         bvm54.setPosicao(5, 2);
         fase3.add(bvm54);
         
-        RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo.setPosicao(0, 5);
-        fase3.add(roboAmarelo);
+        RoboRosa roboRosa1 = new RoboRosa("roboRosa.png", hHero);
+        roboRosa1.setPosicao(2, 5);
+        fase3.add(roboRosa1);
         
-        RoboAmarelo roboAmarelo2 = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo2.setPosicao(2, 5);
-        fase3.add(roboAmarelo2);
+        RoboRosa roboRosa2 = new RoboRosa("roboRosa.png", hHero);
+        roboRosa2.setPosicao(8, 5);
+        fase3.add(roboRosa2);
         
-        RoboAmarelo roboAmarelo3 = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo3.setPosicao(8, 5);
-        fase3.add(roboAmarelo3);
+        RoboAzul roboAzul2 = new RoboAzul("roboAzul.png", hHero);
+        roboAzul2.setPosicao(0, 5);
+        fase3.add(roboAzul2);
         
-        RoboAmarelo roboAmarelo4 = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo4.setPosicao(10, 5);
-        fase3.add(roboAmarelo4);
+        RoboAzul roboAzul3 = new RoboAzul("roboAzul.png", hHero);
+        roboAzul3.setPosicao(10, 5);
+        fase3.add(roboAzul3);
+        
         
         return fase3;
     }
 
     public static ArrayList<Elemento> quartaFase() {
-        backgroundImg = "background2.png";
+        backgroundImg = "background4.png";
         
-        ArrayList<Elemento> quartaFase = new ArrayList<>();
+        ArrayList<Elemento> fase4 = new ArrayList<>();
         
         Hero hHero = new Hero("skooter.png");
         hHero.setPosicao(4, 5);
-        quartaFase.add(hHero);
+        fase4.add(hHero);
 
         BlocoVermelho blocoImovel1 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel1.setPosicao(1, 0);
-        quartaFase.add(blocoImovel1);
+        fase4.add(blocoImovel1);
         
         BlocoVermelho blocoImovel2 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel2.setPosicao(7, 0);
-        quartaFase.add(blocoImovel2);
+        fase4.add(blocoImovel2);
 
         BlocoVermelho blocoImovel3 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel3.setPosicao(8, 1);
-        quartaFase.add(blocoImovel3);
+        fase4.add(blocoImovel3);
         
         BlocoVermelho blocoImovel4 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel4.setPosicao(10, 1);
-        quartaFase.add(blocoImovel4);
+        fase4.add(blocoImovel4);
 
         BlocoVermelho blocoImovel5 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel5.setPosicao(3, 2);
-        quartaFase.add(blocoImovel5);
+        fase4.add(blocoImovel5);
         
         BlocoVermelho blocoImovel6 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel6.setPosicao(5, 2);
-        quartaFase.add(blocoImovel6);
+        fase4.add(blocoImovel6);
 
         BlocoVermelho blocoImovel7 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel7.setPosicao(0, 3);
-        quartaFase.add(blocoImovel7);
+        fase4.add(blocoImovel7);
         
         BlocoVermelho blocoImovel8 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel8.setPosicao(6, 3);
-        quartaFase.add(blocoImovel8);
+        fase4.add(blocoImovel8);
 
         BlocoVermelho blocoImovel9 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel9.setPosicao(2, 5);
-        quartaFase.add(blocoImovel9);
+        fase4.add(blocoImovel9);
         
         BlocoVermelho blocoImovel10 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel10.setPosicao(0, 7);
-        quartaFase.add(blocoImovel10);
+        fase4.add(blocoImovel10);
 
         BlocoVermelho blocoImovel11 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel11.setPosicao(8, 7);
-        quartaFase.add(blocoImovel11);
+        fase4.add(blocoImovel11);
         
         BlocoVermelho blocoImovel12 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel12.setPosicao(1, 8);
-        quartaFase.add(blocoImovel12);
+        fase4.add(blocoImovel12);
 
         BlocoVermelho blocoImovel13 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel13.setPosicao(5, 8);
-        quartaFase.add(blocoImovel13);
+        fase4.add(blocoImovel13);
         
         BlocoVermelho blocoImovel14 = new BlocoVermelho("blocoVermelho.png");
         blocoImovel14.setPosicao(3, 10);
-        quartaFase.add(blocoImovel14);
+        fase4.add(blocoImovel14);
+        
+        BlocoVermelho blocoImovel15 = new BlocoVermelho("blocoVermelho.png");
+        blocoImovel15.setPosicao(8, 10);
+        fase4.add(blocoImovel15);
         
         BlocoVerde blocoVerde1 = new BlocoVerde("blocoverde.png");
         blocoVerde1.setPosicao(1, 1);
-        quartaFase.add(blocoVerde1);
+        fase4.add(blocoVerde1);
         
         BlocoVerde blocoVerde2 = new BlocoVerde("blocoverde.png");
         blocoVerde2.setPosicao(3, 1);
-        quartaFase.add(blocoVerde2);
+        fase4.add(blocoVerde2);
 
         BlocoVerde blocoVerde3 = new BlocoVerde("blocoverde.png");
         blocoVerde3.setPosicao(5, 1);
-        quartaFase.add(blocoVerde3);
+        fase4.add(blocoVerde3);
 
         BlocoVerde blocoVerde4 = new BlocoVerde("blocoverde.png");
         blocoVerde4.setPosicao(7, 1);
-        quartaFase.add(blocoVerde4);
+        fase4.add(blocoVerde4);
 
         BlocoVerde blocoVerde5 = new BlocoVerde("blocoverde.png");
         blocoVerde5.setPosicao(9, 1);
-        quartaFase.add(blocoVerde5);
+        fase4.add(blocoVerde5);
 
         BlocoVerde blocoVerde6 = new BlocoVerde("blocoverde.png");
         blocoVerde6.setPosicao(2,2 );
-        quartaFase.add(blocoVerde6);
+        fase4.add(blocoVerde6);
 
         BlocoVerde blocoVerde7 = new BlocoVerde("blocoverde.png");
         blocoVerde7.setPosicao(4, 2);
-        quartaFase.add(blocoVerde7);
+        fase4.add(blocoVerde7);
 
         BlocoVerde blocoVerde8 = new BlocoVerde("blocoverde.png");
         blocoVerde8.setPosicao(6, 2);
-        quartaFase.add(blocoVerde8);
+        fase4.add(blocoVerde8);
 
         BlocoVerde blocoVerde9 = new BlocoVerde("blocoverde.png");
         blocoVerde9.setPosicao(8, 2);
-        quartaFase.add(blocoVerde9);
+        fase4.add(blocoVerde9);
 
         BlocoVerde blocoVerde10 = new BlocoVerde("blocoverde.png");
         blocoVerde10.setPosicao(1, 3);
-        quartaFase.add(blocoVerde10);
+        fase4.add(blocoVerde10);
 
         BlocoVerde blocoVerde11 = new BlocoVerde("blocoverde.png");
         blocoVerde11.setPosicao(3, 3);
-        quartaFase.add(blocoVerde11);
+        fase4.add(blocoVerde11);
 
         BlocoVerde blocoVerde12 = new BlocoVerde("blocoverde.png");
         blocoVerde12.setPosicao(5, 3);
-        quartaFase.add(blocoVerde12);
+        fase4.add(blocoVerde12);
 
         BlocoVerde blocoVerde13 = new BlocoVerde("blocoverde.png");
         blocoVerde13.setPosicao(7, 3);
-        quartaFase.add(blocoVerde13);
+        fase4.add(blocoVerde13);
 
         BlocoVerde blocoVerde14 = new BlocoVerde("blocoverde.png");
         blocoVerde14.setPosicao(9, 3);
-        quartaFase.add(blocoVerde14);
+        fase4.add(blocoVerde14);
 
         BlocoVerde blocoVerde15 = new BlocoVerde("blocoverde.png");
         blocoVerde15.setPosicao(2, 4);
-        quartaFase.add(blocoVerde15);
+        fase4.add(blocoVerde15);
 
         BlocoVerde blocoVerde16 = new BlocoVerde("blocoverde.png");
         blocoVerde16.setPosicao(4, 4);
-        quartaFase.add(blocoVerde16);
+        fase4.add(blocoVerde16);
 
         BlocoVerde blocoVerde17 = new BlocoVerde("blocoverde.png");
         blocoVerde17.setPosicao(6, 4);
-        quartaFase.add(blocoVerde17);
+        fase4.add(blocoVerde17);
 
         BlocoVerde blocoVerde18 = new BlocoVerde("blocoverde.png");
         blocoVerde18.setPosicao(8, 4);
-        quartaFase.add(blocoVerde18);
+        fase4.add(blocoVerde18);
 
         BlocoVerde blocoVerde19 = new BlocoVerde("blocoverde.png");
         blocoVerde19.setPosicao(1, 5);
-        quartaFase.add(blocoVerde19);
+        fase4.add(blocoVerde19);
 
         BlocoVerde blocoVerde20 = new BlocoVerde("blocoverde.png");
         blocoVerde20.setPosicao(3, 5);
-        quartaFase.add(blocoVerde20);
+        fase4.add(blocoVerde20);
 
         BlocoVerde blocoVerde21 = new BlocoVerde("blocoverde.png");
         blocoVerde21.setPosicao(5, 5);
-        quartaFase.add(blocoVerde21);
+        fase4.add(blocoVerde21);
 
         BlocoVerde blocoVerde22 = new BlocoVerde("blocoverde.png");
         blocoVerde22.setPosicao(7, 5);
-        quartaFase.add(blocoVerde22);
+        fase4.add(blocoVerde22);
         
         BlocoVerde blocoVerde22_ = new BlocoVerde("blocoverde.png");
         blocoVerde22_.setPosicao(9, 5);
-        quartaFase.add(blocoVerde22_);
+        fase4.add(blocoVerde22_);
 
         BlocoVerde blocoVerde23 = new BlocoVerde("blocoverde.png");
         blocoVerde23.setPosicao(2, 6);
-        quartaFase.add(blocoVerde23);
+        fase4.add(blocoVerde23);
 
         BlocoVerde blocoVerde24 = new BlocoVerde("blocoverde.png");
         blocoVerde24.setPosicao(4, 6);
-        quartaFase.add(blocoVerde24);
+        fase4.add(blocoVerde24);
 
         BlocoVerde blocoVerde25 = new BlocoVerde("blocoverde.png");
         blocoVerde25.setPosicao(6, 6);
-        quartaFase.add(blocoVerde25);
+        fase4.add(blocoVerde25);
 
         BlocoVerde blocoVerde26 = new BlocoVerde("blocoverde.png");
         blocoVerde26.setPosicao(8, 6);
-        quartaFase.add(blocoVerde26);
+        fase4.add(blocoVerde26);
 
         BlocoVerde blocoVerde27 = new BlocoVerde("blocoverde.png");
         blocoVerde27.setPosicao(1, 7);
-        quartaFase.add(blocoVerde27);
+        fase4.add(blocoVerde27);
 
         BlocoVerde blocoVerde28 = new BlocoVerde("blocoverde.png");
         blocoVerde28.setPosicao(3, 7);
-        quartaFase.add(blocoVerde28);
+        fase4.add(blocoVerde28);
 
         BlocoVerde blocoVerde29 = new BlocoVerde("blocoverde.png");
         blocoVerde29.setPosicao(5, 7);
-        quartaFase.add(blocoVerde29);
+        fase4.add(blocoVerde29);
 
         BlocoVerde blocoVerde30 = new BlocoVerde("blocoverde.png");
         blocoVerde30.setPosicao(7, 7);
-        quartaFase.add(blocoVerde30);
+        fase4.add(blocoVerde30);
 
         BlocoVerde blocoVerde31 = new BlocoVerde("blocoverde.png");
         blocoVerde31.setPosicao(9, 7);
-        quartaFase.add(blocoVerde31);
+        fase4.add(blocoVerde31);
 
         BlocoVerde blocoVerde32 = new BlocoVerde("blocoverde.png");
         blocoVerde32.setPosicao(2, 8);
-        quartaFase.add(blocoVerde32);
+        fase4.add(blocoVerde32);
 
         BlocoVerde blocoVerde33 = new BlocoVerde("blocoverde.png");
         blocoVerde33.setPosicao(4, 8);
-        quartaFase.add(blocoVerde33);
+        fase4.add(blocoVerde33);
 
         BlocoVerde blocoVerde34 = new BlocoVerde("blocoverde.png");
         blocoVerde34.setPosicao(6, 8);
-        quartaFase.add(blocoVerde34);
+        fase4.add(blocoVerde34);
 
         BlocoVerde blocoVerde35 = new BlocoVerde("blocoverde.png");
         blocoVerde35.setPosicao(8, 8);
-        quartaFase.add(blocoVerde35);
+        fase4.add(blocoVerde35);
 
         BlocoVerde blocoVerde36 = new BlocoVerde("blocoverde.png");
         blocoVerde36.setPosicao(1, 9);
-        quartaFase.add(blocoVerde36);
+        fase4.add(blocoVerde36);
 
         BlocoVerde blocoVerde37 = new BlocoVerde("blocoverde.png");
         blocoVerde37.setPosicao(3, 9);
-        quartaFase.add(blocoVerde37);
+        fase4.add(blocoVerde37);
 
         BlocoVerde blocoVerde38 = new BlocoVerde("blocoverde.png");
         blocoVerde38.setPosicao(5, 9);
-        quartaFase.add(blocoVerde38);
+        fase4.add(blocoVerde38);
 
         BlocoVerde blocoVerde39 = new BlocoVerde("blocoverde.png");
         blocoVerde39.setPosicao(7, 9);
-        quartaFase.add(blocoVerde39);
+        fase4.add(blocoVerde39);
 
         BlocoVerde blocoVerde40 = new BlocoVerde("blocoverde.png");
         blocoVerde40.setPosicao(9, 9);
-        quartaFase.add(blocoVerde40);
+        fase4.add(blocoVerde40);
 
-        BlocoVermelho blocoVermelhofim = new BlocoVermelho("blocoVermelho.png");
-        blocoVermelhofim.setPosicao(8, 10);
-        quartaFase.add(blocoVermelhofim);
         
         Item sol = new Item("sol.png");
         sol.setPosicao(0, 0);
-        quartaFase.add(sol);
+        fase4.add(sol);
         
         Item lampada = new Item("lampada.png");
         lampada.setPosicao(0, 10);
-        quartaFase.add(lampada);
+        fase4.add(lampada);
         
         Item lanterna = new Item("lanterna.png");
         lanterna.setPosicao(10, 10);
-        quartaFase.add(lanterna);
+        fase4.add(lanterna);
         
         Item vela = new Item("vela.png");
         vela.setPosicao(10, 0);
-        quartaFase.add(vela);
+        fase4.add(vela);
 
         RoboAmarelo roboAmarelo1 = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo1.setPosicao(5,0);
-        quartaFase.add(roboAmarelo1);
+        roboAmarelo1.setPosicao(10, 5);
+        fase4.add(roboAmarelo1);
 
         RoboAmarelo roboAmarelo2 = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo2.setPosicao(5, 10);
-        quartaFase.add(roboAmarelo2);
+        roboAmarelo2.setPosicao(0, 5);
+        fase4.add(roboAmarelo2);
 
-        RoboAmarelo roboAmarelo3 = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo3.setPosicao(0, 5);
-        quartaFase.add(roboAmarelo3);
+        RoboVerde roboVerde = new RoboVerde("roboVerde.png");
+        roboVerde.setPosicao(5, 0);
+        fase4.add(roboVerde);
 
-        RoboAmarelo roboAmarelo4 = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo4.setPosicao(10, 5);
-        quartaFase.add(roboAmarelo4);
+        RoboRosa roboRosa = new RoboRosa("roboRosa.png", hHero);
+        roboRosa.setPosicao(5, 10);
+        fase4.add(roboRosa);
 
-        return quartaFase;
+        return fase4;
     }
 }
