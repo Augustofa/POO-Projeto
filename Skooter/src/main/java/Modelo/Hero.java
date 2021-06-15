@@ -2,8 +2,11 @@ package Modelo;
 
 import Auxiliar.Consts;
 import Auxiliar.Desenhador;
+import Auxiliar.Sound;
+import Auxiliar.SoundEffect;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,12 +27,39 @@ public class Hero extends Animado implements Serializable{
     
     public void checaColisao(Elemento eTemp) {
         if (eTemp.isbColetavel()) {             /*Item*/
+            
+            try{
+                String currentPath = new java.io.File(".").getCanonicalPath();
+                String soundEffectPath = currentPath + File.separator + "sounds" + 
+                File.separator + "get_item.wav";
+                
+                SoundEffect collision = new SoundEffect(soundEffectPath);
+                collision.play();
+           
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            
             Desenhador.getTelaDoJogo().removeElemento(eTemp);
             this.itensColetados++;
         } else if (eTemp.isbMortal()) {         /*Inimigo*/
             //Morte do Heroi
             this.itensColetados = 0;
             int vidasTemp = Desenhador.getTelaDoJogo().tiraVida();
+            
+            try{
+                String currentPath = new java.io.File(".").getCanonicalPath();
+                String soundEffectPath = currentPath + File.separator + "sounds" + 
+                File.separator + "lose_life.wav";
+                
+                SoundEffect collision = new SoundEffect(soundEffectPath);
+                collision.play();
+           
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            
+            
             if(vidasTemp > 0){
                 Desenhador.getTelaDoJogo().reiniciaFase();
             }
