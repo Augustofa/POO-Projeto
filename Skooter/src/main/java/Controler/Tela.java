@@ -91,7 +91,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         
             try{
                 String currentPath = new java.io.File(".").getCanonicalPath();
-                String soundtrackPath = currentPath + File.separator + "soundtrack.wav";
+                String soundtrackPath = currentPath + File.separator + "sounds" + 
+                File.separator + "soundtrack.wav";
                 
                 Sound soundtrack = new Sound(soundtrackPath);
                 soundtrack.play();
