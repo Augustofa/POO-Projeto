@@ -19,19 +19,16 @@ import javax.swing.ImageIcon;
  */
 public abstract class Animado extends Elemento{
     protected ImageIcon[] iImages;
-    protected ImageIcon iImageU;
-    protected ImageIcon iImageD;
-    protected ImageIcon iImageL;
-    protected ImageIcon iImageR;
     
     public Animado(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bAnimado = true;
         
+        //Entra em um loop para pegar as imagens com as 4 direcoes do olhar do elemento
         try {
             iImages = new ImageIcon[4];
             char direcao = 'M';
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < 4; i++){ /*Pega direcao da imagem*/
                 if(i == 0){
                     direcao = 'U';
                 } else if(i == 1){
@@ -41,6 +38,7 @@ public abstract class Animado extends Elemento{
                 } else if(i == 3){
                     direcao = 'R';
                 }
+                //Substitui a letra no nome da imagem para pegar a direcao correta
                 iImages[i] = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG.replace(".", direcao + "."));
                 Image img = iImages[i].getImage();
                 BufferedImage bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
@@ -53,6 +51,7 @@ public abstract class Animado extends Elemento{
         }
     }
     
+    //Desenha uma imagem especifica dependendo da direcao do olhar
     @Override
     public void autoDesenho(){
         if(this.getDirecaoOlhar() == 'U'){

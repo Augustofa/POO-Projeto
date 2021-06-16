@@ -6,8 +6,6 @@
 package Auxiliar;
 
 import Modelo.*;
-import Controler.*;
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -40,11 +38,13 @@ public class Fases {
             faseAtual.addAll(segundaFase());
         if(numFase == 3)
             faseAtual.addAll(terceiraFase());
-        if(numFase == 4){
+        if(numFase == 4)
             faseAtual.addAll(quartaFase());
-        }
-        
     }
+    
+//    private static void transicaoDeFase(){
+//        backgroundImg = "youWin.png";
+//    }
     
     private static ArrayList<Elemento> primeiraFase() {
         backgroundImg = "background1.png";

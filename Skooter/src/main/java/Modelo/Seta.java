@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import Auxiliar.Desenhador;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -23,10 +22,6 @@ public class Seta extends Elemento implements Serializable{
     public Seta(String sNomeImagePNG, char direcao) {
         super(sNomeImagePNG);
         this.direcao = direcao;
-    }
-
-    public void autoDesenho() {
-        super.autoDesenho();
     }
     
     @Override
@@ -46,6 +41,7 @@ public class Seta extends Elemento implements Serializable{
         } catch (AWTException e){}
     }
     
+    //Retorna true se eTemp esta olhando para a direcao oposta da seta
     public boolean apontaOposto(Elemento eTemp){
         if(this.direcao == 'U' && eTemp.getDirecaoOlhar() == 'D'){
             return true;

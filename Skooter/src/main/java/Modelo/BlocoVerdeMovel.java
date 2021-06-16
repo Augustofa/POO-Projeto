@@ -16,9 +16,5 @@ public class BlocoVerdeMovel extends BlocoVerde implements Serializable{
     public BlocoVerdeMovel(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bMovel = true;
-    }
-
-    public void autoDesenho() {
-        super.autoDesenho();
-    }    
+    }  
 }

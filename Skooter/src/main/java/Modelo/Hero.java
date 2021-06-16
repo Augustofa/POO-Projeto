@@ -1,18 +1,12 @@
 package Modelo;
 
-import Auxiliar.Consts;
 import Auxiliar.Desenhador;
-import Auxiliar.Sound;
 import Auxiliar.SoundEffect;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -25,57 +19,37 @@ public class Hero extends Animado implements Serializable{
         super(sNomeImagePNG);
     }
     
+    //Colisao Heroi x Varias Coisas
     public void checaColisao(Elemento eTemp) {
-        if (eTemp.isbColetavel()) {             /*Item*/
-            
-            try{
-                String currentPath = new java.io.File(".").getCanonicalPath();
-                String soundEffectPath = currentPath + File.separator + "sounds" + 
-                File.separator + "get_item.wav";
-                
-                SoundEffect collision = new SoundEffect(soundEffectPath);
+        if (eTemp.isbColetavel()) {             /*Item*/               
+            try {
+                SoundEffect collision = new SoundEffect("get_item.wav");
                 collision.play();
-           
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
-            
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {}
             Desenhador.getTelaDoJogo().removeElemento(eTemp);
             this.itensColetados++;
         } else if (eTemp.isbMortal()) {         /*Inimigo*/
             //Morte do Heroi
             this.itensColetados = 0;
             int vidasTemp = Desenhador.getTelaDoJogo().tiraVida();
-            
-            try{
-                String currentPath = new java.io.File(".").getCanonicalPath();
-                String soundEffectPath = currentPath + File.separator + "sounds" + 
-                File.separator + "lose_life.wav";
-                
-                SoundEffect collision = new SoundEffect(soundEffectPath);
-                collision.play();
-           
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
-            
-            
             if(vidasTemp > 0){
                 Desenhador.getTelaDoJogo().reiniciaFase();
             }
         } else if (eTemp.isbMovel()) {          /*BlocoMovel*/
             Bloco blocoTemp = (Bloco) eTemp;
+            //Se o blocoMovel nao se mover, o heroi volta a ultima posicao
             if(!blocoTemp.movimenta(this.apontaUltimaPos())){
                 this.voltaAUltimaPosicao();
             }
         } else if (eTemp.isbTransponivel()) {   /*Seta*/
-           Seta setaTemp = (Seta) eTemp;
+            Seta setaTemp = (Seta) eTemp;
+            //Se a seta apontar pro lado oposto, o heroi volta a ultima posicao
             if(setaTemp.apontaOposto(this)){
                 this.voltaAUltimaPosicao();
             } else{
                 eTemp.checaColisao(this);
             }
-        } else if (!eTemp.isbTransponivel()) {  /*Bloco*/
+        } else if (!eTemp.isbTransponivel()) {  /*BlocoImovel*/
             this.voltaAUltimaPosicao();
         }
     }
@@ -84,15 +58,16 @@ public class Hero extends Animado implements Serializable{
         return itensColetados;
     }
     
+    //Tenta destruir um bloco na direcao do olhar do heroi
     public void destroiElemento(ArrayList<Elemento> e){
         if (this.direcaoOlhar == 'U') {
-            this.destroiAux(e, this.pPosicao.getColuna(), this.pPosicao.getLinha() - 1);
+            destroiAux(e, this.pPosicao.getColuna(), this.pPosicao.getLinha() - 1);
         } else if (this.direcaoOlhar == 'D') {
-            this.destroiAux(e, this.pPosicao.getColuna(), this.pPosicao.getLinha() + 1);
+            destroiAux(e, this.pPosicao.getColuna(), this.pPosicao.getLinha() + 1);
         } else if (this.direcaoOlhar == 'L') {
-            this.destroiAux(e, this.pPosicao.getColuna() - 1, this.pPosicao.getLinha());
+            destroiAux(e, this.pPosicao.getColuna() - 1, this.pPosicao.getLinha());
         } else if (this.direcaoOlhar == 'R') {
-            this.destroiAux(e, this.pPosicao.getColuna() + 1, this.pPosicao.getLinha());
+            destroiAux(e, this.pPosicao.getColuna() + 1, this.pPosicao.getLinha());
         }
     }
     
@@ -107,21 +82,4 @@ public class Hero extends Animado implements Serializable{
             }
         }
     }
-    
-//    public char apontaUltimaPos(){
-//        if(this.pPosicao.getLinhaAnterior() == this.pPosicao.getLinha()){
-//            if(this.pPosicao.getColuna() < this.pPosicao.getColunaAnterior()){
-//                return 'R';
-//            }else if(this.pPosicao.getColuna() > this.pPosicao.getColunaAnterior()){
-//                return 'L';
-//            }
-//        }else if(this.pPosicao.getColunaAnterior() == this.pPosicao.getColuna()){
-//            if(this.pPosicao.getLinha() < this.pPosicao.getLinhaAnterior()){
-//                return 'D';
-//            }else if(this.pPosicao.getLinha() > this.pPosicao.getLinhaAnterior()){
-//                return 'U';
-//            }
-//        }
-//        return 'M';
-//    }
 }

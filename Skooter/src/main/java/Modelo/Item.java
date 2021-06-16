@@ -1,9 +1,6 @@
 package Modelo;
 
-import Auxiliar.Consts;
 import Auxiliar.Desenhador;
-import Controler.Tela;
-import java.awt.Graphics;
 import java.io.Serializable;
 
 public class Item extends Elemento implements Serializable{
@@ -12,10 +9,6 @@ public class Item extends Elemento implements Serializable{
         super(sNomeImagePNG);
         this.bTransponivel = true;
         this.bColetavel = true;
-    }
-
-    public void autoDesenho() {
-        super.autoDesenho();
     }
     
     @Override

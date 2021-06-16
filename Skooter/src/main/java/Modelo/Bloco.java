@@ -19,10 +19,6 @@ public abstract class Bloco extends Elemento implements Serializable {
         this.bTransponivel = false;
     }
 
-    public void autoDesenho() {
-        super.autoDesenho();
-    }
-
     public void checaColisao(Elemento eTemp) {
         if (this.isbMovel()) {
             /*Bloco Movel x Varias Coisas*/
@@ -38,20 +34,6 @@ public abstract class Bloco extends Elemento implements Serializable {
             eTemp.voltaAUltimaPosicao();
         }
     }
-    
-    @Override
-    public boolean checaPosicao(int linha, int coluna) {
-        for (Elemento eTemp : Desenhador.getTelaDoJogo().getArrayElementos()){
-            if(eTemp != this){
-                if (eTemp.pPosicao.getLinha() == linha) {
-                    if (eTemp.pPosicao.getColuna() == coluna) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
 
     public boolean movimenta(char UltimaDirecaoHeroi) {
         if (UltimaDirecaoHeroi == 'R') {
@@ -62,7 +44,7 @@ public abstract class Bloco extends Elemento implements Serializable {
             return this.moveDown();
         } else if (UltimaDirecaoHeroi == 'D') {
             return this.moveUp();
-        } 
+        }
         return false;
     }
     

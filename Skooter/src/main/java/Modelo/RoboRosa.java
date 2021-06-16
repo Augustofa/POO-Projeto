@@ -1,38 +1,21 @@
 package Modelo;
 
-import Auxiliar.Desenhador;
 import java.io.Serializable;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  *
  * @author Junio
  */
 public class RoboRosa extends Inimigo implements Serializable{
-    Timer timer;
     Hero imagemHero;
     int direcoesTentadas  = 0;
 
     public RoboRosa(String sNomeImagePNG, Hero imagemHero) {
         super(sNomeImagePNG);
         this.imagemHero = imagemHero;
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask(){
-            public void run(){
-                movimenta();
-            }
-        }, 0, 1000);
     }
     
-    public void autoDesenho(){          
-        super.autoDesenho();
-    }
-    
-    public void checaColisao(Elemento eTemp){
-        super.checaColisao(eTemp);
-    }
-    
+    //Tenta um movimento valido que deixa ele mais perto do heroi
     public boolean movimenta(){
         if (imagemHero.pPosicao.getLinha() > pPosicao.getLinha() && direcoesTentadas < 1) {
             if(!moveDown()){

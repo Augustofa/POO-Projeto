@@ -43,7 +43,7 @@ public class ControleDeJogo {
                     if(i == 0){
                         Hero heroTemp = (Hero) eTemp;
                         heroTemp.checaColisao(eTemp2);
-                        /*Caso o heroi colete todas os itens*/
+                        /*Caso o heroi colete todos os itens*/
                         if(heroTemp.getItensColetados() == 4){
                             Desenhador.getTelaDoJogo().proximaFase();
                             return;

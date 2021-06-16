@@ -1,8 +1,6 @@
 package Modelo;
 
 import java.io.Serializable;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  *
@@ -10,28 +8,13 @@ import java.util.TimerTask;
  */
 public class RoboAzul extends Inimigo implements Serializable{
     Hero imagemHero;
-    Timer timer;
 
     public RoboAzul(String sNomeImagePNG, Hero imagemHero) {
         super(sNomeImagePNG);
         this.imagemHero = imagemHero;
-        
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask(){
-            public void run(){
-                movimenta();
-            }
-        }, 0, 1000);
     }
     
-    public void autoDesenho(){          
-        super.autoDesenho();
-    }
-    
-    public void checaColisao(Elemento eTemp){
-        super.checaColisao(eTemp);
-    }
-    
+    //Prioriza ficar na mesma coluna do heroi, para entao ir ate a linha dele
     public boolean movimenta(){
         if(contadorRandom != 3){
             contadorRandom++;

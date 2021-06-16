@@ -12,9 +12,11 @@ import java.util.Scanner;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
   
+//Classe achado na internet reutilizada e modificada para tocar os efeitos sonoros
 public class SoundEffect 
 {
   
@@ -29,10 +31,13 @@ public class SoundEffect
    
   
     // constructor to initialize streams and clip
-    public SoundEffect(String filePath)
+    public SoundEffect(String fileName)
         throws UnsupportedAudioFileException,
         IOException, LineUnavailableException 
     {
+        String currentPath = new java.io.File(".").getCanonicalPath();
+        String filePath = currentPath + Consts.PATH_SOUND + fileName;
+
         // create AudioInputStream object
         audioInputStream = 
                 AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
@@ -47,6 +52,8 @@ public class SoundEffect
     public void play() 
     {
         //start the clip
+        FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(-2.0f);
         clip.start();
           
         status = "play";

@@ -6,18 +6,29 @@
 package Modelo;
 import Auxiliar.Desenhador;
 import java.io.Serializable;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
  * @author daniel
  */
-public class Inimigo extends Animado implements Serializable {
+public abstract class Inimigo extends Animado implements Serializable {
     int contadorRandom = 0;
+    Timer timer;
     
     public Inimigo(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bMortal = true;
+        
+        //Cria um timer de movimento
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask(){
+            public void run(){
+                movimenta();
+            }
+        }, 0, 1000);
     }
     
     public void checaColisao(Elemento eTemp) {

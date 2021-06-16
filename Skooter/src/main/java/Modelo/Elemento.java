@@ -2,15 +2,12 @@ package Modelo;
 
 import Auxiliar.Consts;
 import Auxiliar.Desenhador;
-import Controler.Tela;
-import Controler.ControleDeJogo;
 import Auxiliar.Posicao;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -81,10 +78,6 @@ public abstract class Elemento implements Serializable {
     public void setDirecaoOlhar(char direcao){
         this.direcaoOlhar = direcao;
     }
-    
-    public void setbTransponivel(boolean bTransponivel) {
-        this.bTransponivel = bTransponivel;
-    }
 
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
@@ -130,6 +123,7 @@ public abstract class Elemento implements Serializable {
         return true;
     }
     
+    //Retorna char com a direcao da ultima posicao ocupada pelo elemento
     public char apontaUltimaPos() {
         if (this.pPosicao.getLinhaAnterior() == this.pPosicao.getLinha()) {
             if (this.pPosicao.getColuna() < this.pPosicao.getColunaAnterior()) {

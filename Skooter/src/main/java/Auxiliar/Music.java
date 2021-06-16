@@ -7,15 +7,16 @@ package Auxiliar;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
   
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-  
-public class Sound 
+
+//Classe achado na internet reutilizada e modificada para tocar a musica de fundo
+public class Music 
 {
   
     // to store current position
@@ -29,7 +30,7 @@ public class Sound
    
   
     // constructor to initialize streams and clip
-    public Sound(String filePath)
+    public Music(String filePath)
         throws UnsupportedAudioFileException,
         IOException, LineUnavailableException 
     {
@@ -49,6 +50,8 @@ public class Sound
     public void play() 
     {
         //start the clip
+        FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(-8.0f);
         clip.start();
           
         status = "play";

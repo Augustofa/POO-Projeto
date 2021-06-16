@@ -10,6 +10,8 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 import java.util.zip.*;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -94,7 +96,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 String soundtrackPath = currentPath + File.separator + "sounds" + 
                 File.separator + "soundtrack.wav";
                 
-                Sound soundtrack = new Sound(soundtrackPath);
+                Music soundtrack = new Music(soundtrackPath);
                 soundtrack.play();
            
             }catch(Exception e){
@@ -130,10 +132,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 Fases.proximaFase(eElementos);
                 hHero = (Hero) eElementos.get(0);
             } else if (e.getKeyCode() == KeyEvent.VK_R) {
+                tiraVida();
                 this.reiniciaFase();
             }
-
-
+            
             /*
             Se o heroi for para uma posicao invalida, sobre um elemento 
             intransponivel, volta para onde estava
@@ -190,6 +192,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     public int tiraVida(){
         vidas--;
+        try {
+            SoundEffect collision = new SoundEffect("lose_life.wav");
+            collision.play();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+        }
         return vidas;
     }
 

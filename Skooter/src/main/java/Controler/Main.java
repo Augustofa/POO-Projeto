@@ -1,6 +1,4 @@
-package Modelo;
-
-import Controler.Tela;
+package Controler;
 
 /**
  *
