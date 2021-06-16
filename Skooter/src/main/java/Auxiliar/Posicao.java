@@ -17,7 +17,7 @@ public class Posicao implements Serializable{
         }
     }
 
-    public boolean setPosicao(int linha, int coluna){       
+    public boolean setPosicao(int linha, int coluna){
         if(linha < 0 || linha >= Auxiliar.Consts.RES){
             return false;
         }

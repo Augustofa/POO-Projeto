@@ -18,46 +18,36 @@ import javax.swing.ImageIcon;
  * @author Augusto
  */
 public abstract class Animado extends Elemento{
+    protected ImageIcon[] iImages;
     protected ImageIcon iImageU;
     protected ImageIcon iImageD;
     protected ImageIcon iImageL;
     protected ImageIcon iImageR;
+    
     public Animado(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bAnimado = true;
         
         try {
-            //Imagem olhando pra cima
-            iImageU = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG.replace(".", "U."));
-            Image img = iImageU.getImage();
-            BufferedImage bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
-            Graphics g = bi.createGraphics();
-            g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-            iImageU = new ImageIcon(bi);
-            
-            //Imagem olhando pra baixo
-            iImageD = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
-            img = iImageD.getImage();
-            bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
-            g = bi.createGraphics();
-            g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-            iImageD = new ImageIcon(bi);
-            
-            //Imagem olhando pra esquerda
-            iImageL = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG.replace(".", "L."));
-            img = iImageL.getImage();
-            bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
-            g = bi.createGraphics();
-            g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-            iImageL = new ImageIcon(bi);
-            
-            //Imagem olhando pra direita
-            iImageR = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG.replace(".", "R."));
-            img = iImageR.getImage();
-            bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
-            g = bi.createGraphics();
-            g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
-            iImageR = new ImageIcon(bi);
+            iImages = new ImageIcon[4];
+            char direcao = 'M';
+            for(int i = 0; i < 4; i++){
+                if(i == 0){
+                    direcao = 'U';
+                } else if(i == 1){
+                    direcao = 'D';
+                } else if(i == 2){
+                    direcao = 'L';
+                } else if(i == 3){
+                    direcao = 'R';
+                }
+                iImages[i] = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImagePNG.replace(".", direcao + "."));
+                Image img = iImages[i].getImage();
+                BufferedImage bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
+                Graphics g = bi.createGraphics();
+                g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                iImages[i] = new ImageIcon(bi);
+            }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -66,13 +56,13 @@ public abstract class Animado extends Elemento{
     @Override
     public void autoDesenho(){
         if(this.getDirecaoOlhar() == 'U'){
-            Desenhador.desenhar(this.iImageU, pPosicao.getColuna(), pPosicao.getLinha());
+            Desenhador.desenhar(this.iImages[0], pPosicao.getColuna(), pPosicao.getLinha());
         } else if(this.getDirecaoOlhar() == 'D'){
-            Desenhador.desenhar(this.iImageD, pPosicao.getColuna(), pPosicao.getLinha());
+            Desenhador.desenhar(this.iImages[1], pPosicao.getColuna(), pPosicao.getLinha());
         } else if(this.getDirecaoOlhar() == 'L'){
-            Desenhador.desenhar(this.iImageL, pPosicao.getColuna(), pPosicao.getLinha());
+            Desenhador.desenhar(this.iImages[2], pPosicao.getColuna(), pPosicao.getLinha());
         } else if(this.getDirecaoOlhar() == 'R'){
-            Desenhador.desenhar(this.iImageR, pPosicao.getColuna(), pPosicao.getLinha());
+            Desenhador.desenhar(this.iImages[3], pPosicao.getColuna(), pPosicao.getLinha());
         }
     }
 }

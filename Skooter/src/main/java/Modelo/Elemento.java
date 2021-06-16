@@ -28,7 +28,7 @@ public abstract class Elemento implements Serializable {
     protected boolean bColetavel;
     protected boolean bDestrutivel;
     protected boolean bMovel;
-       
+         
     protected Elemento(String sNomeImagePNG) {
         this.pPosicao = new Posicao(-1, -1);
         this.direcaoOlhar = 'D';
