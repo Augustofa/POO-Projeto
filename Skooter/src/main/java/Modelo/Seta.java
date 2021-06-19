@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Auxiliar.Desenhador;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -26,6 +27,7 @@ public class Seta extends Elemento implements Serializable{
     
     @Override
     public void checaColisao(Elemento eTemp){
+        Desenhador.getTelaDoJogo().tocaEfeito("seta_move.wav");
         try {
             robot = new Robot();
             //Chama metodo pra movimentar o outro elemento na direcao certa

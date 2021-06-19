@@ -22,11 +22,13 @@ import javax.swing.border.EmptyBorder;
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
     private Hero hHero;
-    private int vidas = 3;
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
+    private boolean esperandoTecla = true;
     private long lastPress = 0;
+    private int vidas = 3; /*implementar R tirando vida*/
+    private Music soundtrack;
     
     /**
      * Creates new form
@@ -89,22 +91,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
     }
     
-    public void tocarMusica(){
-        
-            try{
-                String currentPath = new java.io.File(".").getCanonicalPath();
-                String soundtrackPath = currentPath + File.separator + "sounds" + 
-                File.separator + "soundtrack.wav";
-                
-                Music soundtrack = new Music(soundtrackPath);
-                soundtrack.play();
-           
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
-       
-    }
-    
     public void go() {
         TimerTask redesenhar = new TimerTask() {
             public void run() {
@@ -132,19 +118,23 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 Fases.proximaFase(eElementos);
                 hHero = (Hero) eElementos.get(0);
             } else if (e.getKeyCode() == KeyEvent.VK_R) {
-                tiraVida();
-                this.reiniciaFase();
+                this.tiraVida();
+                if (vidas <= 0) {
+                    Desenhador.getTelaDoJogo().gameOver();
+                } else{
+                    this.reiniciaFase();
+                }
             }
-            
-            /*
-            Se o heroi for para uma posicao invalida, sobre um elemento 
-            intransponivel, volta para onde estava
-            */
             lastPress = System.currentTimeMillis();
         }
         /*Evento da barra de espaco separado pra que nao tenha delay entre andar 
         e poder destruir um bloco*/
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            if(esperandoTecla){
+                this.criaMusica();
+                this.reiniciaFase();
+                esperandoTecla = false;
+            }
             hHero.destroiElemento(eElementos);
         }
         
@@ -165,6 +155,25 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         Fases.gameOver(eElementos);
         hHero = (Hero) eElementos.get(0);
         this.vidas = 3;
+    }
+    
+    public void criaMusica() {
+        try {
+            String currentPath = new java.io.File(".").getCanonicalPath();
+            String soundtrackPath = currentPath + Consts.PATH_SOUND + "soundtrack.wav";
+
+            soundtrack = new Music(soundtrackPath);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void playMusica(){
+        soundtrack.play();
+    }
+    
+    public void pausaMusica(){
+        soundtrack.pause();
     }
     
     public Elemento checaPosicao(int linha, int coluna){
@@ -192,12 +201,21 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     public int tiraVida(){
         vidas--;
+//        if (vidas <= 0) {
+//            Desenhador.getTelaDoJogo().gameOver();
+//        }
+        tocaEfeito("lose_life.wav");
+        System.out.println("Vida perdida!");
+        System.out.println("Vidas atuais: " + Desenhador.getTelaDoJogo().getVidas());
+        return vidas;
+    }
+    
+    public void tocaEfeito(String nomeArquivo){
         try {
-            SoundEffect collision = new SoundEffect("lose_life.wav");
+            SoundEffect collision = new SoundEffect(nomeArquivo);
             collision.play();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
         }
-        return vidas;
     }
 
     public void mousePressed(MouseEvent e) {

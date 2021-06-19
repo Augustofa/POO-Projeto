@@ -6,32 +6,59 @@
 package Auxiliar;
 
 import Modelo.*;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Augusto
  */
 public class Fases {
-    static int fase = 0;
+    public static int fase = 0;
     public static String backgroundImg;
+    public static ArrayList<String> transicoes;
+    //todo: metodos terem ArrayList disponivel pra n terem que receber toda vez
+//    private static ArrayList<Elemento> eElementos;
+    
     public static void proximaFase(ArrayList<Elemento> eElementos) {
+        if(fase == 0){
+            Fases.criaTransicoes();
+        }
         eElementos.clear();
+        Fases.transicaoDeFase(eElementos, transicoes.get(fase));
         fase++;
-        Fases.getFase(fase, eElementos);
     }
     
     public static void resetaFase(ArrayList<Elemento> eElementos){
         eElementos.clear();
-        Fases.getFase(fase, eElementos);
+        Fases.iniciaFase(fase, eElementos);
     }
     
-    public static void gameOver(ArrayList<Elemento> eElementos){
-        fase = 0;
-        Fases.proximaFase(eElementos);
+    public static void gameOver(ArrayList<Elemento> eElementos) {
+        eElementos.clear();
+        backgroundImg = "gameOver.png";
+        
+        Desenhador.getTelaDoJogo().pausaMusica();
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                fase = 0;
+                Fases.proximaFase(eElementos);
+                Desenhador.getTelaDoJogo().playMusica();
+            }
+        }, 5000);
     }
     
-    public static void getFase(int numFase, ArrayList<Elemento> faseAtual){
+    private static void iniciaFase(int numFase, ArrayList<Elemento> faseAtual){
+        /*Eh possivel adicionar as fases num array ArrayList<Elemento>[] fases,
+        mas por enquanto, com poucas fases, isso nao eh absolutamente necessario*/
         if(numFase == 1)
             faseAtual.addAll(primeiraFase());
         if(numFase == 2)
@@ -42,9 +69,42 @@ public class Fases {
             faseAtual.addAll(quartaFase());
     }
     
-//    private static void transicaoDeFase(){
-//        backgroundImg = "youWin.png";
-//    }
+    private static void criaTransicoes(){
+        transicoes = new ArrayList<>();
+        transicoes.add("startMenu.png");
+        transicoes.add("transicaoJacare.png");
+        transicoes.add("transicaoICMC.png");
+        transicoes.add("transicaoGoto.png");
+        transicoes.add("youWin.png");
+    }
+    
+    private static void transicaoDeFase(ArrayList<Elemento> eElementos, String telaTransicao){
+        backgroundImg = telaTransicao;
+        int delay;
+        
+        Hero dummyHero = new Hero("");
+        eElementos.add(dummyHero);
+        
+        if(fase > 0){
+            Desenhador.getTelaDoJogo().pausaMusica();
+
+            delay = 3000;
+
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask(){
+                public void run(){
+                    if(fase < 5){
+                        eElementos.clear();
+                        Fases.iniciaFase(fase, eElementos);
+                        Desenhador.getTelaDoJogo().reiniciaFase();
+                        Desenhador.getTelaDoJogo().playMusica();
+                    }else{
+                        Fases.gameOver(eElementos);
+                    }
+                }
+            }, delay);
+        }
+    }
     
     private static ArrayList<Elemento> primeiraFase() {
         backgroundImg = "background1.png";

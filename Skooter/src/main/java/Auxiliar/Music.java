@@ -57,6 +57,11 @@ public class Music
         status = "play";
     }
     
+    public void pause(){
+        clip.stop();
+        
+        status = "stop";
+    }
 }
 
  

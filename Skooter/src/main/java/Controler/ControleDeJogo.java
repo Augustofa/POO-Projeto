@@ -44,12 +44,12 @@ public class ControleDeJogo {
                         Hero heroTemp = (Hero) eTemp;
                         heroTemp.checaColisao(eTemp2);
                         /*Caso o heroi colete todos os itens*/
-                        if(heroTemp.getItensColetados() == 4){
+                        if(heroTemp.getItensColetados() >= 4){
                             Desenhador.getTelaDoJogo().proximaFase();
                             return;
                         }
                         /*Caso as vidas acabem*/
-                        if(Desenhador.getTelaDoJogo().getVidas() == 0){
+                        if(Desenhador.getTelaDoJogo().getVidas() <= 0){
                             Desenhador.getTelaDoJogo().gameOver();
                             return;
                         }

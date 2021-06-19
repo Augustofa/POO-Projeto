@@ -22,17 +22,14 @@ public class Hero extends Animado implements Serializable{
     //Colisao Heroi x Varias Coisas
     public void checaColisao(Elemento eTemp) {
         if (eTemp.isbColetavel()) {             /*Item*/               
-            try {
-                SoundEffect collision = new SoundEffect("get_item.wav");
-                collision.play();
-            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {}
+            Desenhador.getTelaDoJogo().tocaEfeito("get_item.wav");
             Desenhador.getTelaDoJogo().removeElemento(eTemp);
             this.itensColetados++;
         } else if (eTemp.isbMortal()) {         /*Inimigo*/
             //Morte do Heroi
             this.itensColetados = 0;
-            int vidasTemp = Desenhador.getTelaDoJogo().tiraVida();
-            if(vidasTemp > 0){
+            Desenhador.getTelaDoJogo().tiraVida();
+            if(Desenhador.getTelaDoJogo().getVidas() > 0){
                 Desenhador.getTelaDoJogo().reiniciaFase();
             }
         } else if (eTemp.isbMovel()) {          /*BlocoMovel*/
@@ -58,6 +55,10 @@ public class Hero extends Animado implements Serializable{
         return itensColetados;
     }
     
+    public void perdeVida(){
+        
+    }
+    
     //Tenta destruir um bloco na direcao do olhar do heroi
     public void destroiElemento(ArrayList<Elemento> e){
         if (this.direcaoOlhar == 'U') {
@@ -76,6 +77,7 @@ public class Hero extends Animado implements Serializable{
             if(e.get(i).pPosicao.getColuna() == xPos){
                 if(e.get(i).pPosicao.getLinha() == yPos){
                     if(e.get(i).isbDestrutivel()){
+                        Desenhador.getTelaDoJogo().tocaEfeito("break_block.wav");
                         e.remove(i);
                     }
                 }
