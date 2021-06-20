@@ -5,11 +5,14 @@
  */
 package Modelo;
 
+import Auxiliar.Consts;
 import Auxiliar.Desenhador;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,30 +20,32 @@ import java.io.Serializable;
  */
 
 public class Seta extends Elemento implements Serializable{
-    char direcao;
-    Robot robot;
+    private char direcao;
+    private Robot robot;
 
     public Seta(String sNomeImagePNG, char direcao) {
         super(sNomeImagePNG);
         this.direcao = direcao;
+        try {
+            robot = new Robot();
+        } catch (AWTException ex) {
+            ex.printStackTrace();
+        }
     }
     
     @Override
-    public void checaColisao(Elemento eTemp){
+    public void checaColisao(Elemento eTemp) {
         Desenhador.getTelaDoJogo().tocaEfeito("seta_move.wav");
-        try {
-            robot = new Robot();
-            //Chama metodo pra movimentar o outro elemento na direcao certa
-            if (this.direcao == 'U') {
-                robot.keyPress(KeyEvent.VK_UP);
-            } else if (this.direcao == 'D') {
-                robot.keyPress(KeyEvent.VK_DOWN);
-            } else if (this.direcao == 'R') {
-                robot.keyPress(KeyEvent.VK_RIGHT);
-            } else if (this.direcao == 'L') {
-                robot.keyPress(KeyEvent.VK_LEFT);
-            }
-        } catch (AWTException e){}
+        //Chama metodo pra movimentar o outro elemento na direcao certa
+        if (this.direcao == 'U') {
+            robot.keyPress(KeyEvent.VK_UP);
+        } else if (this.direcao == 'D') {
+            robot.keyPress(KeyEvent.VK_DOWN);
+        } else if (this.direcao == 'R') {
+            robot.keyPress(KeyEvent.VK_RIGHT);
+        } else if (this.direcao == 'L') {
+            robot.keyPress(KeyEvent.VK_LEFT);
+        }
     }
     
     //Retorna true se eTemp esta olhando para a direcao oposta da seta

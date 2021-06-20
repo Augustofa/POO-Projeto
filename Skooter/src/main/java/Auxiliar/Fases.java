@@ -23,8 +23,6 @@ public class Fases {
     public static int fase = 0;
     public static String backgroundImg;
     public static ArrayList<String> transicoes;
-    //todo: metodos terem ArrayList disponivel pra n terem que receber toda vez
-//    private static ArrayList<Elemento> eElementos;
     
     public static void proximaFase(ArrayList<Elemento> eElementos) {
         if(fase == 0){
@@ -44,14 +42,18 @@ public class Fases {
         eElementos.clear();
         backgroundImg = "gameOver.png";
         
+        Hero dummyHero = new Hero("");
+        eElementos.add(dummyHero);
+        
+        Desenhador.getTelaDoJogo().setEsperandoTecla(true);
         Desenhador.getTelaDoJogo().pausaMusica();
 
+        /*Cria um timer pra que a primeira fase seja exibida em "delay" ms*/
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
                 fase = 0;
                 Fases.proximaFase(eElementos);
-                Desenhador.getTelaDoJogo().playMusica();
             }
         }, 5000);
     }
@@ -78,6 +80,7 @@ public class Fases {
         transicoes.add("youWin.png");
     }
     
+    //Cria uma fase vazia e sem musica so com o background de transicao
     private static void transicaoDeFase(ArrayList<Elemento> eElementos, String telaTransicao){
         backgroundImg = telaTransicao;
         int delay;
@@ -87,25 +90,32 @@ public class Fases {
         
         if(fase > 0){
             Desenhador.getTelaDoJogo().pausaMusica();
-
+            Desenhador.getTelaDoJogo().setLoading(true);
             delay = 3000;
+            
+            if(fase == 4){
+                delay += 5000;
+            }
 
+            /*Cria um timer para que a proxima fase seja exibida em "delay" ms*/
             Timer timer = new Timer();
             timer.schedule(new TimerTask(){
                 public void run(){
-                    if(fase < 5){
+                    if(fase == 5){
+                        System.exit(0);
+                    }else{
                         eElementos.clear();
                         Fases.iniciaFase(fase, eElementos);
+                        Desenhador.getTelaDoJogo().setLoading(false);
                         Desenhador.getTelaDoJogo().reiniciaFase();
                         Desenhador.getTelaDoJogo().playMusica();
-                    }else{
-                        Fases.gameOver(eElementos);
                     }
                 }
             }, delay);
         }
     }
     
+    //Cada fase é composta de um array com elementos que é copiado para trocar
     private static ArrayList<Elemento> primeiraFase() {
         backgroundImg = "background1.png";
 
@@ -118,7 +128,7 @@ public class Fases {
         
         // ROBOS
         RoboRosa roboRosa1 = new RoboRosa("roboRosa.png", hHero);
-        roboRosa1.setPosicao(10, 9);
+        roboRosa1.setPosicao(10, 1);
         fase1.add(roboRosa1);
 
         RoboRosa roboRosa2 = new RoboRosa("roboRosa.png", hHero);
@@ -130,7 +140,7 @@ public class Fases {
         fase1.add(roboAzul);
 
         RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo.setPosicao(10, 1);
+        roboAmarelo.setPosicao(10, 9);
         fase1.add(roboAmarelo);
 
         // BLOCOS ESTATICOS
@@ -366,13 +376,13 @@ public class Fases {
         roboVerde1.setPosicao(1, 1);
         fase2.add(roboVerde1);
 
-        RoboVerde roboVerde2 = new RoboVerde("roboVerde.png");
-        roboVerde2.setPosicao(1, 9);
-        fase2.add(roboVerde2);
-
         RoboAmarelo roboAmarelo = new RoboAmarelo("roboAmarelo.png", hHero);
-        roboAmarelo.setPosicao(9, 9);
+        roboAmarelo.setPosicao(1, 9);
         fase2.add(roboAmarelo);
+
+        RoboAzul roboAzul = new RoboAzul("roboAzul.png", hHero);
+        roboAzul.setPosicao(9, 9);
+        fase2.add(roboAzul);
 
         RoboRosa roboRosa = new RoboRosa("roboRosa.png", hHero);
         roboRosa.setPosicao(9, 1);

@@ -20,19 +20,15 @@ public class Music
 {
   
     // to store current position
-    Long currentFrame;
-    Clip clip;
+    private final Clip clip;
       
     // current status of clip
-    String status;
-      
-    AudioInputStream audioInputStream;
+    private final AudioInputStream audioInputStream;
    
-  
     // constructor to initialize streams and clip
     public Music(String filePath)
         throws UnsupportedAudioFileException,
-        IOException, LineUnavailableException 
+        IOException, LineUnavailableException, InterruptedException 
     {
         // create AudioInputStream object
         audioInputStream = 
@@ -52,15 +48,12 @@ public class Music
         //start the clip
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
         gainControl.setValue(-8.0f);
-        clip.start();
-          
-        status = "play";
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     
-    public void pause(){
+    public void pause()
+    {
         clip.stop();
-        
-        status = "stop";
     }
 }
 

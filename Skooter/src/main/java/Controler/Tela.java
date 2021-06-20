@@ -9,25 +9,21 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import java.util.logging.*;
-import java.util.zip.*;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.sound.sampled.*;
 /**
  *
  * @author junio
  */
-public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
+public class Tela extends javax.swing.JFrame implements KeyListener {
 
     private Hero hHero;
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
     private boolean esperandoTecla = true;
+    private boolean loading = false;
     private long lastPress = 0;
-    private int vidas = 3; /*implementar R tirando vida*/
+    private int vidas = 3;
     private Music soundtrack;
     
     /**
@@ -37,7 +33,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
         initComponents();
  
-        this.addMouseListener(this); /*mouse*/
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do cenario + insets (bordas) da janela*/
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
@@ -45,8 +40,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         /*Este array vai guardar os elementos graficos*/
         eElementos = new ArrayList<>(100);
-        /*Inicia a primeira fase*/
+        /*Inicia o menu inicial*/
         this.proximaFase();
+        this.setTitle("Skrooter");
 
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
     }
@@ -64,26 +60,27 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return g2;
     }
     
-    /*Este metodo eh executado a cada Consts.FRAME_INTERVAL milissegundos*/    
+    /*Este método é executado a cada Consts.FRAME_INTERVAL milissegundos*/    
     public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();
-        /*Criamos um contexto gráfico*/
+        /*Criamos um contexto gráfico do tamanho da tela*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
-        /*Desenha cenário*/
+        
         try {
-            //Pega a imagem fora do loop para um aumento gigante na performance
+            /*Desenha uma imagem de fundo grande ao inves de ter que desenhar muitas pequenas*/
             Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File(".").getCanonicalPath() + Consts.PATH + Fases.backgroundImg);
             g2.drawImage(newImage, 0, 0, null);
         } catch (IOException ex) {
             Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /*Aqui podem ser inseridos novos processamentos de controle*/
-        if (!this.eElementos.isEmpty()) {
+        
+        /*Só processa elementos se o array não estiver vazio e estiver em uma fase*/
+        if (!this.eElementos.isEmpty() || !loading) {
             this.cControle.processaTudo(eElementos);
             this.cControle.desenhaTudo(eElementos);
         }
         
-        //Esvazia os espacos de memoria ocupados pelos Buffers
+        /*Esvazia os espacos de memoria ocupados pelos Buffers*/
         g.dispose();
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
@@ -104,8 +101,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public void keyPressed(KeyEvent e) {
+        /*Adiciona um delay para o movimento do heroi não ser instantâneo*/
         if(System.currentTimeMillis() - lastPress > Consts.FRAME_INTERVAL + 20){
-            /*Movimento do heroi via teclado*/
             if (e.getKeyCode() == KeyEvent.VK_UP) {
                 hHero.moveUp();
             } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -133,12 +130,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             if(esperandoTecla){
                 this.criaMusica();
                 this.reiniciaFase();
-                esperandoTecla = false;
+                setEsperandoTecla(false);
             }
             hHero.destroiElemento(eElementos);
         }
-        
-        this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
     }
     
     public void proximaFase(){
@@ -176,15 +171,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         soundtrack.pause();
     }
     
-    public Elemento checaPosicao(int linha, int coluna){
-        for(Elemento eTemp : eElementos){
-            if(eTemp.pPosicao.getLinha() == linha){
-                if(eTemp.pPosicao.getColuna() == coluna){
-                    return eTemp;
-                }
-            }
-        }
-        return null;
+    public void setLoading(boolean loading){
+        this.loading = loading;
+    }
+    
+    public void setEsperandoTecla(boolean esperandoTecla){
+        this.esperandoTecla = esperandoTecla;
     }
     
     public ArrayList<Elemento> getArrayElementos(){
@@ -201,12 +193,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     public int tiraVida(){
         vidas--;
-//        if (vidas <= 0) {
-//            Desenhador.getTelaDoJogo().gameOver();
-//        }
         tocaEfeito("lose_life.wav");
         System.out.println("Vida perdida!");
-        System.out.println("Vidas atuais: " + Desenhador.getTelaDoJogo().getVidas());
+        if(vidas == 0){
+            System.out.println("Voce morreu...");
+        } else {
+            System.out.println("Vidas atuais: " + Desenhador.getTelaDoJogo().getVidas());
+        }
         return vidas;
     }
     
@@ -219,21 +212,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public void mousePressed(MouseEvent e) {
-         //Movimento via mouse
-         int x = e.getX();
-         int y = e.getY();
-     
-         this.setTitle("X: "+ x + ", Y: " + y +
-         " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
-        
-         this.hHero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
-
-        /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-            hHero.voltaAUltimaPosicao();
-        }         
-         
-        repaint();
     }
 
     /**
@@ -265,24 +243,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-    public void mouseMoved(MouseEvent e) {
-    }
-
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    public void mouseExited(MouseEvent e) {
-    }
-
-    public void mouseDragged(MouseEvent e) {
-    }
 
     public void keyTyped(KeyEvent e) {
     }
