@@ -111,9 +111,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                 hHero.moveLeft();
             } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 hHero.moveRight();
-            } else if (e.getKeyCode() == KeyEvent.VK_P) {
-                Fases.proximaFase(eElementos);
-                hHero = (Hero) eElementos.get(0);
+                /*Codigo para testes, passa de fase instantaneamente*/
+//            } else if (e.getKeyCode() == KeyEvent.VK_P) {
+//                Fases.proximaFase(eElementos);
+//                hHero = (Hero) eElementos.get(0);
             } else if (e.getKeyCode() == KeyEvent.VK_R) {
                 this.tiraVida();
                 if (vidas <= 0) {
