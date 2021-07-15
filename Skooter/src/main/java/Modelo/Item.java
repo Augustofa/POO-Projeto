@@ -1,6 +1,7 @@
 package Modelo;
 
 import Auxiliar.Desenhador;
+import Controler.Tela;
 import java.io.Serializable;
 
 public class Item extends Elemento implements Serializable{
@@ -13,7 +14,7 @@ public class Item extends Elemento implements Serializable{
     
     @Override
     public void checaColisao(Elemento eTemp){
-        if(eTemp != Desenhador.getTelaDoJogo().getHeroi()){
+        if(eTemp != Tela.getTela().getHeroi()){
             eTemp.voltaAUltimaPosicao();
         }
     }

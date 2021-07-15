@@ -6,7 +6,6 @@
 package Modelo;
 
 import java.io.Serializable;
-import Auxiliar.Desenhador;
 
 /**
  *

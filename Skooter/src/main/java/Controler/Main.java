@@ -14,7 +14,7 @@ public class Main {
         responder o programa espera a anterior finalizar o processo*/
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Tela tTela = new Tela();
+                Tela tTela = Tela.getTela();
                 tTela.setVisible(true);
                 tTela.createBufferStrategy(2);
                 tTela.go();

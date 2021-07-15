@@ -3,6 +3,7 @@ package Modelo;
 import Auxiliar.Consts;
 import Auxiliar.Desenhador;
 import Auxiliar.Posicao;
+import Controler.Tela;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -111,7 +112,7 @@ public abstract class Elemento implements Serializable {
     
     //Retorna false se tiver um elemento na posicao recebida
     public boolean checaPosicao(int linha, int coluna) {
-        for (Elemento eTemp : Desenhador.getTelaDoJogo().getArrayElementos()){
+        for (Elemento eTemp : Tela.getTela().getArrayElementos()){
             if(eTemp != this){
                 if (eTemp.pPosicao.getLinha() == linha) {
                     if (eTemp.pPosicao.getColuna() == coluna) {

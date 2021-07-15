@@ -1,13 +1,8 @@
 package Modelo;
 
-import Auxiliar.Desenhador;
-import Auxiliar.SoundEffect;
-import java.io.IOException;
+import Controler.Tela;
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 /**
  *
  * @author Junio
@@ -22,15 +17,15 @@ public class Hero extends Animado implements Serializable{
     //Colisao Heroi x Varias Coisas
     public void checaColisao(Elemento eTemp) {
         if (eTemp.isbColetavel()) {             /*Item*/               
-            Desenhador.getTelaDoJogo().tocaEfeito("get_item.wav");
-            Desenhador.getTelaDoJogo().removeElemento(eTemp);
+            Tela.getTela().tocaEfeito("get_item.wav");
+            Tela.getTela().removeElemento(eTemp);
             this.itensColetados++;
         } else if (eTemp.isbMortal()) {         /*Inimigo*/
             //Morte do Heroi
             this.itensColetados = 0;
-            Desenhador.getTelaDoJogo().tiraVida();
-            if(Desenhador.getTelaDoJogo().getVidas() > 0){
-                Desenhador.getTelaDoJogo().reiniciaFase();
+            Tela.getTela().tiraVida();
+            if(Tela.getTela().getVidas() > 0){
+                Tela.getTela().reiniciaFase();
             }
         } else if (eTemp.isbMovel()) {          /*BlocoMovel*/
             Bloco blocoTemp = (Bloco) eTemp;
@@ -55,10 +50,6 @@ public class Hero extends Animado implements Serializable{
         return itensColetados;
     }
     
-    public void perdeVida(){
-        
-    }
-    
     //Tenta destruir um bloco na direcao do olhar do heroi
     public void destroiElemento(ArrayList<Elemento> e){
         if (this.direcaoOlhar == 'U') {
@@ -77,7 +68,7 @@ public class Hero extends Animado implements Serializable{
             if(e.get(i).pPosicao.getColuna() == xPos){
                 if(e.get(i).pPosicao.getLinha() == yPos){
                     if(e.get(i).isbDestrutivel()){
-                        Desenhador.getTelaDoJogo().tocaEfeito("break_block.wav");
+                        Tela.getTela().tocaEfeito("break_block.wav");
                         e.remove(i);
                     }
                 }

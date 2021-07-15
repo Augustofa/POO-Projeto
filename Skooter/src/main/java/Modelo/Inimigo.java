@@ -5,6 +5,7 @@
  */
 package Modelo;
 import Auxiliar.Desenhador;
+import Controler.Tela;
 import java.io.Serializable;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,17 +33,17 @@ public abstract class Inimigo extends Animado implements Serializable {
     }
     
     public void checaColisao(Elemento eTemp) {
-        if (eTemp != Desenhador.getTelaDoJogo().getHeroi()) {
+        if (eTemp != Tela.getTela().getHeroi()) {
             this.voltaAUltimaPosicao();                /*Blocos ou Itens ou Inimigos*/
         }
     }
     
     public boolean checaPosicao(int linha, int coluna) {
-        for (Elemento eTemp : Desenhador.getTelaDoJogo().getArrayElementos()){
+        for (Elemento eTemp : Tela.getTela().getArrayElementos()){
             if(eTemp != this){
                 if (eTemp.pPosicao.getLinha() == linha) {
                     if (eTemp.pPosicao.getColuna() == coluna) {
-                        if(eTemp == Desenhador.getTelaDoJogo().getHeroi()){
+                        if(eTemp == Tela.getTela().getHeroi()){
                             return true;
                         } else{
                             return false;

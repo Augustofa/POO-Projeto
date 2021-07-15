@@ -16,6 +16,7 @@ import javax.sound.sampled.*;
  */
 public class Tela extends javax.swing.JFrame implements KeyListener {
 
+    private static Tela instancia;
     private Hero hHero;
     private ArrayList<Elemento> eElementos;
     private ControleDeJogo cControle = new ControleDeJogo();
@@ -29,7 +30,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     /**
      * Creates new form
      */
-    public Tela() {
+    private Tela() {
         Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
         initComponents();
  
@@ -58,6 +59,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     public Graphics getGraphicsBuffer(){
         return g2;
+    }
+    
+    public static Tela getTela(){
+        if(instancia == null){
+            instancia = new Tela();
+        }
+        return instancia;
     }
     
     /*Este método é executado a cada Consts.FRAME_INTERVAL milissegundos*/    
@@ -112,13 +120,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 hHero.moveRight();
                 /*Codigo para testes, passa de fase instantaneamente*/
-//            } else if (e.getKeyCode() == KeyEvent.VK_P) {
-//                Fases.proximaFase(eElementos);
-//                hHero = (Hero) eElementos.get(0);
+            } else if (e.getKeyCode() == KeyEvent.VK_P) {
+                Fases.proximaFase(eElementos);
+                hHero = (Hero) eElementos.get(0);
             } else if (e.getKeyCode() == KeyEvent.VK_R) {
                 this.tiraVida();
                 if (vidas <= 0) {
-                    Desenhador.getTelaDoJogo().gameOver();
+                    Tela.getTela().gameOver();
                 } else{
                     this.reiniciaFase();
                 }
@@ -199,7 +207,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         if(vidas == 0){
             System.out.println("Voce morreu...");
         } else {
-            System.out.println("Vidas atuais: " + Desenhador.getTelaDoJogo().getVidas());
+            System.out.println("Vidas atuais: " + Tela.getTela().getVidas());
         }
         return vidas;
     }

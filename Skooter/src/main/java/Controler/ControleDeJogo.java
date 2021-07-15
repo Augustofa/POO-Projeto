@@ -42,12 +42,12 @@ public class ControleDeJogo {
                         heroTemp.checaColisao(eTemp2);
                         /*Caso o heroi colete todos os itens*/
                         if(heroTemp.getItensColetados() >= 4){
-                            Desenhador.getTelaDoJogo().proximaFase();
+                            Tela.getTela().proximaFase();
                             return;
                         }
                         /*Caso as vidas acabem*/
-                        if(Desenhador.getTelaDoJogo().getVidas() <= 0){
-                            Desenhador.getTelaDoJogo().gameOver();
+                        if(Tela.getTela().getVidas() <= 0){
+                            Tela.getTela().gameOver();
                             return;
                         }
                     //Inimigos x Varias Coisas
