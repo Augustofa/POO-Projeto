@@ -27,6 +27,10 @@ public abstract class Inimigo extends Animado implements Serializable {
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
             public void run(){
+                /*Padrão de design Command é implementado:
+                O timer não sabe qual método movimenta() será chamado, como
+                todos os tipos de robôs possuem ele, será decidido com base
+                na classe em que o timer estará durante a execução*/
                 movimenta();
             }
         }, 0, 1000);

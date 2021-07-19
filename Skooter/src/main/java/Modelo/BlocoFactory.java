@@ -10,6 +10,9 @@ package Modelo;
  * @author Augusto
  */
 public class BlocoFactory {
+    /*Padrão de design Abstract Factory implementado:
+    O método de criaBloco recebe uma string com o tipo e retorna a classe de
+    bloco correspondente à string*/
     public static Bloco criaBloco(String tipo){
         if(tipo.equalsIgnoreCase("verde")){
             return new BlocoVerde("blocoVerde.png");

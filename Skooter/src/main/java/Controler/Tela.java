@@ -61,6 +61,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         return g2;
     }
     
+    /*Padrão de design Singleton implementado:
+    Na primeira vez que getTela é chamado (Nota-se que é um método estático),
+    irá criar uma instancia de Tela, após isso, retornará essa mesma instancia
+    sem nunca poder criar outras (O construtor de Tela é private)*/
     public static Tela getTela(){
         if(instancia == null){
             instancia = new Tela();
