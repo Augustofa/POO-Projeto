@@ -14,7 +14,7 @@ import javax.sound.sampled.*;
  *
  * @author junio
  */
-public class Tela extends javax.swing.JFrame implements KeyListener {
+public class Tela extends javax.swing.JFrame implements KeyListener, Serializable {
 
     private static Tela instancia;
     private Hero hHero;
@@ -55,6 +55,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     public void removeElemento(Elemento umElemento) {
         eElementos.remove(umElemento);
+    }
+    
+    public void resetaArray(){
+        eElementos.clear();
     }
 
     public Graphics getGraphicsBuffer(){
@@ -134,6 +138,12 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                 } else{
                     this.reiniciaFase();
                 }
+            } else if (e.getKeyCode() == KeyEvent.VK_L) {
+                this.resetaArray();
+                Saver.loadJogo();
+                hHero = (Hero) eElementos.get(0);
+            } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                Saver.salvaJogo();
             }
             lastPress = System.currentTimeMillis();
         }
