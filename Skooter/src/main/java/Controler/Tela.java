@@ -301,7 +301,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         int mY = e.getY()/Consts.CELL_SIDE;
         
         if(e.getButton() == MouseEvent.BUTTON3){
-            System.out.println("clica");
+           
             for(Elemento eTemp : eElementos){
                 if(eTemp.pPosicao.getColuna() == mX){
                     if(eTemp.pPosicao.getLinha() == mY){
