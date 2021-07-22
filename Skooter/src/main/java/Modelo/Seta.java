@@ -22,30 +22,30 @@ import java.util.logging.Logger;
 
 public class Seta extends Elemento implements Serializable{
     private char direcao;
-    private Robot robot;
 
     public Seta(String sNomeImagePNG, char direcao) {
         super(sNomeImagePNG);
         this.direcao = direcao;
-        try {
-            robot = new Robot();
-        } catch (AWTException ex) {
-            ex.printStackTrace();
-        }
     }
     
     @Override
     public void checaColisao(Elemento eTemp) {
         Tela.getTela().tocaEfeito("seta_move.wav");
-        //Chama metodo pra movimentar o outro elemento na direcao certa
-        if (this.direcao == 'U') {
-            robot.keyPress(KeyEvent.VK_UP);
-        } else if (this.direcao == 'D') {
-            robot.keyPress(KeyEvent.VK_DOWN);
-        } else if (this.direcao == 'R') {
-            robot.keyPress(KeyEvent.VK_RIGHT);
-        } else if (this.direcao == 'L') {
-            robot.keyPress(KeyEvent.VK_LEFT);
+        Robot robot;
+        try {
+            robot = new Robot();
+            //Chama metodo pra movimentar o outro elemento na direcao certa
+            if (this.direcao == 'U') {
+                robot.keyPress(KeyEvent.VK_UP);
+            } else if (this.direcao == 'D') {
+                robot.keyPress(KeyEvent.VK_DOWN);
+            } else if (this.direcao == 'R') {
+                robot.keyPress(KeyEvent.VK_RIGHT);
+            } else if (this.direcao == 'L') {
+                robot.keyPress(KeyEvent.VK_LEFT);
+            }
+        } catch (AWTException ex) {
+            ex.printStackTrace();
         }
     }
     

@@ -44,6 +44,8 @@ public class Tela extends javax.swing.JFrame implements KeyListener, Serializabl
         /*Inicia o menu inicial*/
         this.proximaFase();
         this.setTitle("Skrooter");
+        
+        Saver.criaAutoSave();
 
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
     }
@@ -139,11 +141,9 @@ public class Tela extends javax.swing.JFrame implements KeyListener, Serializabl
                     this.reiniciaFase();
                 }
             } else if (e.getKeyCode() == KeyEvent.VK_L) {
-                this.resetaArray();
-                Saver.loadJogo();
-                hHero = (Hero) eElementos.get(0);
+                carregaJogo();
             } else if (e.getKeyCode() == KeyEvent.VK_S) {
-                Saver.salvaJogo();
+                salvaJogo();
             }
             lastPress = System.currentTimeMillis();
         }
@@ -156,6 +156,22 @@ public class Tela extends javax.swing.JFrame implements KeyListener, Serializabl
                 setEsperandoTecla(false);
             }
             hHero.destroiElemento(eElementos);
+        }
+    }
+    
+    public void carregaJogo(){
+        this.resetaArray();
+        Saver.loadJogo();
+        hHero = (Hero) eElementos.get(0);
+        if(soundtrack == null){
+            criaMusica();
+        }
+    }
+    
+    public void salvaJogo(){
+        if(!loading){
+            System.out.println("Salvando Jogo...");
+            Saver.salvaJogo();
         }
     }
     
@@ -212,6 +228,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener, Serializabl
     
     public int getVidas(){
         return vidas;
+    }
+    
+    public void setVidas(int novaVidas){
+        vidas = novaVidas;
     }
     
     public int tiraVida(){

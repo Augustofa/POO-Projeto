@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Modelo;
+import Auxiliar.Consts;
 import Auxiliar.Desenhador;
 import Controler.Tela;
 import java.io.Serializable;
@@ -17,23 +18,26 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public abstract class Inimigo extends Animado implements Serializable {
     int contadorRandom = 0;
-    Timer timer;
+    long framesContados = 0;
     
     public Inimigo(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bMortal = true;
-        
-        //Cria um timer de movimento
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask(){
-            public void run(){
-                /*Padrão de design Command é implementado:
-                O timer não sabe qual método movimenta() será chamado, como
-                todos os tipos de robôs possuem ele, será decidido com base
-                na classe em que o timer estará durante a execução*/
-                movimenta();
-            }
-        }, 0, 1000);
+    }
+    
+    @Override
+    public void autoDesenho(){
+        super.autoDesenho();
+        if(framesContados >= 10){
+            /*Padrão de design Command é implementado:
+            O timer não sabe qual método movimenta() será chamado, como
+            todos os tipos de robôs possuem ele, será decidido com base
+            na classe em que o timer estará durante a execução*/
+            movimenta();
+            framesContados = 0;
+        } else{
+            framesContados++;
+        }
     }
     
     public void checaColisao(Elemento eTemp) {
