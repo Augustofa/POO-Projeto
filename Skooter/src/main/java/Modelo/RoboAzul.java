@@ -1,5 +1,6 @@
 package Modelo;
 
+import Controler.Tela;
 import java.io.Serializable;
 
 /**

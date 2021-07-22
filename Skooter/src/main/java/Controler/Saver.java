@@ -36,7 +36,7 @@ public class Saver {
                 public void run(){
                     Tela.getTela().salvaJogo();
                 }
-            }, 0, intervalo*1000);
+            }, 10000, intervalo*1000);
     }
     public static void salvaJogo(){
         File save = new File("save.zip");

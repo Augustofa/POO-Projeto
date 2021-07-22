@@ -10,11 +10,12 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 import javax.sound.sampled.*;
+import javax.swing.JFileChooser;
 /**
  *
  * @author junio
  */
-public class Tela extends javax.swing.JFrame implements KeyListener, Serializable {
+public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
     private static Tela instancia;
     private Hero hHero;
@@ -34,6 +35,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener, Serializabl
         Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
         initComponents();
  
+        this.addMouseListener(this); /*mouse*/
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do cenario + insets (bordas) da janela*/
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
@@ -253,8 +255,56 @@ public class Tela extends javax.swing.JFrame implements KeyListener, Serializabl
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
         }
     }
+    
+    public void substituiElemento(Elemento elem){
+        int x = elem.pPosicao.getColuna();
+        int y = elem.pPosicao.getLinha();
+        
+        eElementos.remove(elem);
+        
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File("."));
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        File arqElemento = null;
+         
+        int valorRetornado = chooser.showOpenDialog(null);
+        if(valorRetornado == JFileChooser.APPROVE_OPTION) {
+            arqElemento = chooser.getSelectedFile();
+        }
+        
+        if (!arqElemento.exists()) {
+            System.out.println("Falha em carregar arquivo");
+        }
+        try{
+            FileInputStream fileStream = new FileInputStream(arqElemento);
+            ObjectInputStream inputStream = new ObjectInputStream(fileStream);
+            
+            Elemento novoElemento = (Elemento) inputStream.readObject();
+            novoElemento.setPosicao(y, x);
+            eElementos.add(novoElemento);
+            
+            fileStream.close();
+            inputStream.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public void mousePressed(MouseEvent e) {
+        int mX = e.getX()/Consts.CELL_SIDE;
+        int mY = e.getY()/Consts.CELL_SIDE;
+        
+        if(e.getButton() == MouseEvent.BUTTON3){
+            System.out.println("clica");
+            for(Elemento eTemp : eElementos){
+                if(eTemp.pPosicao.getColuna() == mX){
+                    if(eTemp.pPosicao.getLinha() == mY){
+                        substituiElemento(eTemp);
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -291,5 +341,21 @@ public class Tela extends javax.swing.JFrame implements KeyListener, Serializabl
     }
 
     public void keyReleased(KeyEvent e) {
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 }
