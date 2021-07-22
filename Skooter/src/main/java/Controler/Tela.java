@@ -193,6 +193,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.vidas = 3;
     }
     
+    public boolean getLoading(){
+        return loading;
+    }
+    
     public void criaMusica() {
         try {
             String currentPath = new java.io.File(".").getCanonicalPath();
@@ -267,6 +271,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         File arqElemento = null;
          
+        this.loading = true;
         int valorRetornado = chooser.showOpenDialog(null);
         if(valorRetornado == JFileChooser.APPROVE_OPTION) {
             arqElemento = chooser.getSelectedFile();
@@ -288,6 +293,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        this.loading = false;
     }
 
     public void mousePressed(MouseEvent e) {
