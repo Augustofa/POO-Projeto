@@ -7,7 +7,6 @@ import java.io.Serializable;
  * @author Junio
  */
 public class RoboAmarelo extends Inimigo implements Serializable{
-    Hero imagemHero;
 
     public RoboAmarelo(String sNomeImagePNG, Hero imagemHero) {
         super(sNomeImagePNG);

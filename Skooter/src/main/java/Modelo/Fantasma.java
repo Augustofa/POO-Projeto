@@ -13,7 +13,6 @@ import java.io.Serializable;
  * @author Augusto
  */
 public class Fantasma extends Inimigo implements Serializable{
-    Hero imagemHero;
     int tipoMov = 0;
     public Fantasma(String sNomeImagePNG) {
         super(sNomeImagePNG);

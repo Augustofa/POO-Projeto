@@ -17,7 +17,7 @@ import java.io.ObjectOutputStream;
  */
 public class MainAuxiliar {
     public static void main(String[] args){
-        File elemento = new File("elemento");
+        File elemento = new File("Fantasma");
         if (elemento.exists()) {
             try {
                 elemento.createNewFile();

@@ -7,7 +7,6 @@ import java.io.Serializable;
  * @author Junio
  */
 public class RoboRosa extends Inimigo implements Serializable{
-    Hero imagemHero;
     int direcoesTentadas  = 0;
 
     public RoboRosa(String sNomeImagePNG, Hero imagemHero) {

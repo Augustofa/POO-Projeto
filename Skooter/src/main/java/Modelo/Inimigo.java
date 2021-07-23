@@ -17,8 +17,9 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author daniel
  */
 public abstract class Inimigo extends Animado implements Serializable {
+    Hero imagemHero;
     int contadorRandom = 0;
-    long framesContados = -20;
+    long framesContados = -10;
     
     public Inimigo(String sNomeImagePNG) {
         super(sNomeImagePNG);
