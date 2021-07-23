@@ -80,6 +80,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return instancia;
     }
     
+    public static boolean isInstanciada(){
+        return (instancia != null);
+    }
+    
     /*Este método é executado a cada Consts.FRAME_INTERVAL milissegundos*/    
     public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();
@@ -229,7 +233,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
     
     public Hero getHeroi(){
-        return hHero;
+        return (Hero) eElementos.get(0);
     }
     
     public int getVidas(){
@@ -286,7 +290,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             
             Elemento novoElemento = (Elemento) inputStream.readObject();
             novoElemento.setPosicao(y, x);
+            if(novoElemento instanceof Fantasma){
+                System.out.println("Fantasma!!");
+                ((Fantasma) novoElemento).resetaImagem();
+            }
             eElementos.add(novoElemento);
+            
+            System.out.println(arqElemento);
             
             fileStream.close();
             inputStream.close();

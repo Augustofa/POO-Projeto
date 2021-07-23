@@ -19,6 +19,8 @@ public abstract class Bloco extends Elemento implements Serializable {
     }
 
     public void checaColisao(Elemento eTemp) {
+        if(eTemp instanceof Fantasma)
+            return;
         if (this.isbMovel()) {
             /*Bloco Movel x Varias Coisas*/
             if (!eTemp.isbTransponivel() || eTemp.isbColetavel()) {

@@ -17,20 +17,20 @@ import java.io.ObjectOutputStream;
  */
 public class MainAuxiliar {
     public static void main(String[] args){
-        File save = new File("elemento");
-        if (save.exists()) {
+        File elemento = new File("elemento");
+        if (elemento.exists()) {
             try {
-                save.createNewFile();
+                elemento.createNewFile();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
         try {
-            FileOutputStream fileStream = new FileOutputStream(save);
+            FileOutputStream fileStream = new FileOutputStream(elemento);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-            Bloco elemento = BlocoFactory.criaBloco("verde");
+            Fantasma fant = new Fantasma("coracao.png");
             
-            objectStream.writeObject(elemento);
+            objectStream.writeObject(fant);
 
             objectStream.close();
             fileStream.close();

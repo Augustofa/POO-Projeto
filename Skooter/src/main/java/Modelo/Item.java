@@ -14,6 +14,8 @@ public class Item extends Elemento implements Serializable{
     
     @Override
     public void checaColisao(Elemento eTemp){
+        if(eTemp instanceof Fantasma)
+            return;
         if(eTemp != Tela.getTela().getHeroi()){
             eTemp.voltaAUltimaPosicao();
         }

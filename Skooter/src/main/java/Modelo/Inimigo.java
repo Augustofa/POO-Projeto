@@ -43,6 +43,8 @@ public abstract class Inimigo extends Animado implements Serializable {
     }
     
     public void checaColisao(Elemento eTemp) {
+        if(eTemp instanceof Fantasma)
+            return;
         if (eTemp != Tela.getTela().getHeroi()) {
             this.voltaAUltimaPosicao();                /*Blocos ou Itens ou Inimigos*/
         }

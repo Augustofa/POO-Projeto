@@ -50,7 +50,7 @@ public class SoundEffect
     {
         //start the clip
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-        gainControl.setValue(-2.0f);
+        gainControl.setValue(Consts.VOLUME_ABAIXADO + 5);
         clip.start();
     }
     
