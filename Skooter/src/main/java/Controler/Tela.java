@@ -264,6 +264,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
     }
     
+    /* Método que substitui um elemento da tela por um outro desejado em um arquivo */
     public void substituiElemento(Elemento elem){
         int x = elem.pPosicao.getColuna();
         int y = elem.pPosicao.getLinha();
@@ -285,6 +286,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             System.out.println("Falha em carregar arquivo");
         }
         try{
+            // Efetua a leitura no arquivo
             FileInputStream fileStream = new FileInputStream(arqElemento);
             ObjectInputStream inputStream = new ObjectInputStream(fileStream);
             

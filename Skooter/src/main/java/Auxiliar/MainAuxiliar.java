@@ -28,7 +28,7 @@ public class MainAuxiliar {
         try {
             FileOutputStream fileStream = new FileOutputStream(elemento);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-            Fantasma fant = new Fantasma("coracao.png");
+            Fantasma fant = new Fantasma("fantasma.png");
             
             objectStream.writeObject(fant);
 
