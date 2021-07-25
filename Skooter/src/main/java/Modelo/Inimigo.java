@@ -19,18 +19,20 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class Inimigo extends Animado implements Serializable {
     Hero imagemHero;
     int contadorRandom = 0;
+    int timerMovimento;
     long framesContados = -10;
     
     public Inimigo(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.bMortal = true;
+        this.timerMovimento = 10;
     }
     
     @Override
     public void autoDesenho(){
         super.autoDesenho();
         if(!Tela.getTela().getLoading()){
-            if(framesContados >= 10){
+            if(framesContados >= timerMovimento){
                 /*Padrão de design Command é implementado:
                 O timer não sabe qual método movimenta() será chamado, como
                 todos os tipos de robôs possuem ele, será decidido com base

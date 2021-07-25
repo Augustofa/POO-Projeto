@@ -16,6 +16,7 @@ public class Fantasma extends Inimigo implements Serializable{
     int tipoMov = 0;
     public Fantasma(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.timerMovimento = 5;
     }
     
     public void resetaImagem(){
