@@ -2,6 +2,7 @@ package Modelo;
 
 
 import java.io.Serializable;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
@@ -14,21 +15,17 @@ public class RoboVerde extends Inimigo implements Serializable{
     }
     
     public boolean movimenta() {
-        if (contadorRandom != 3) {
-            contadorRandom++;
-            if (direcaoOlhar == 'D') {
-                return moveLeft();
-            } else if (direcaoOlhar == 'L') {
-                return moveUp();
-            } else if (direcaoOlhar == 'U') {
-                return moveRight();
-            } else if (direcaoOlhar == 'R') {
-                return moveDown();
-            }
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 5);
+        if(randomNum == 1){
+            return moveUp();
+        } else if(randomNum == 2){
+            return moveDown();
+        } else if(randomNum == 3){
+            return moveRight();
+        } else if(randomNum == 4){
+            return moveLeft();
+        } else { 
             return false;
-        } else {
-            contadorRandom = 0;
-            return super.movimenta();
         }
     }
 }

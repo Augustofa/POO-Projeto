@@ -20,7 +20,7 @@ public abstract class Inimigo extends Animado implements Serializable {
     Hero imagemHero;
     int contadorRandom = 0;
     int timerMovimento;
-    long framesContados = -10;
+    long framesContados = -10;  //Inimigo tem um delay inicial maior
     
     public Inimigo(String sNomeImagePNG) {
         super(sNomeImagePNG);
@@ -33,11 +33,11 @@ public abstract class Inimigo extends Animado implements Serializable {
         super.autoDesenho();
         if(!Tela.getTela().getLoading()){
             if(framesContados >= timerMovimento){
-                /*Padrão de design Command é implementado:
+                /*Padrão de design Command:
                 O contador de frames não sabe qual método movimenta()
-                será chamado, como todos os tipos de robôs possuem ele, 
-                será decidido com base na classe em que o contador 
-                estiver durante a execução*/
+                será chamado, como todos os tipos de robôs possuem ele e
+                é um método abstrato dentro de Inimigo, será decidido com
+                base na classe em que o contador estiver durante a execução*/
                 movimenta();
                 framesContados = 0;
             } else{
@@ -71,17 +71,5 @@ public abstract class Inimigo extends Animado implements Serializable {
         return true;
     }
     
-    public boolean movimenta(){
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 5);
-        if(randomNum == 1){
-            return moveUp();
-        } else if(randomNum == 2){
-            return moveDown();
-        } else if(randomNum == 3){
-            return moveRight();
-        } else if(randomNum == 4){
-            return moveLeft();
-        }
-        return false;
-    }
+    public abstract boolean movimenta();
 }
