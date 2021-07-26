@@ -295,12 +295,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             Elemento novoElemento = (Elemento) inputStream.readObject();
             novoElemento.setPosicao(y, x);
             if(novoElemento instanceof Fantasma){
-                System.out.println("Fantasma!!");
                 ((Fantasma) novoElemento).resetaImagem();
             }
             eElementos.add(novoElemento);
-            
-            System.out.println(arqElemento);
             
             fileStream.close();
             inputStream.close();

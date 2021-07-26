@@ -33,11 +33,11 @@ public class Saver {
         
         // Efetua o salvamento automático a cada intervalo desejado pelo usuário
         Timer timer = new Timer();
-            timer.scheduleAtFixedRate(new TimerTask(){
-                public void run(){
-                    Tela.getTela().salvaJogo();
-                }
-            }, 10000, intervalo*1000);
+        timer.scheduleAtFixedRate(new TimerTask(){
+            public void run(){
+                Tela.getTela().salvaJogo();
+            }
+        }, 10000, intervalo*1000);
     }
     
     /* Salva o jogo em um arquivo zip */
