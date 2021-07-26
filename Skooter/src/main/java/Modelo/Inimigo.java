@@ -34,9 +34,10 @@ public abstract class Inimigo extends Animado implements Serializable {
         if(!Tela.getTela().getLoading()){
             if(framesContados >= timerMovimento){
                 /*Padrão de design Command é implementado:
-                O timer não sabe qual método movimenta() será chamado, como
-                todos os tipos de robôs possuem ele, será decidido com base
-                na classe em que o timer estará durante a execução*/
+                O contador de frames não sabe qual método movimenta()
+                será chamado, como todos os tipos de robôs possuem ele, 
+                será decidido com base na classe em que o contador 
+                estiver durante a execução*/
                 movimenta();
                 framesContados = 0;
             } else{

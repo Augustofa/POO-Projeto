@@ -55,7 +55,7 @@ public class Saver {
             GZIPOutputStream compactor = new GZIPOutputStream(fileStream);
             ObjectOutputStream objectStream = new ObjectOutputStream(compactor);
             
-            /* Efetura a escrita do arrayList de objetos e dos estados do jogo */
+            /* Efetua a escrita do arrayList de objetos e dos estados do jogo */
             objectStream.writeObject(Fases.fase);
             objectStream.writeObject(Fases.backgroundImg);
             objectStream.writeObject(Fases.transicoes);
@@ -90,7 +90,6 @@ public class Saver {
             Fases.transicoes = (ArrayList<String>) inputStream.readObject();
             Tela.getTela().setVidas((int) inputStream.readObject());
             
-            ArrayList<Elemento> arr = new ArrayList<>();
             try{
                 while(true){
                     Tela.getTela().addElemento((Elemento) inputStream.readObject());

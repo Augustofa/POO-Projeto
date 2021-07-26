@@ -166,11 +166,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
     
     public void carregaJogo(){
-        this.resetaArray();
-        Saver.loadJogo();
-        hHero = (Hero) eElementos.get(0);
-        if(soundtrack == null){
-            criaMusica();
+        if(!this.loading){
+            this.resetaArray();
+            Saver.loadJogo();
+            hHero = (Hero) eElementos.get(0);
+            if(soundtrack == null){
+                criaMusica();
+            }
         }
     }
     
